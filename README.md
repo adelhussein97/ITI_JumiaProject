@@ -1,4 +1,3 @@
-# Ecommerce_GraduationProject_ITI
 # E-Commerce Shopping Graduation Project ITI .Net Qena.
 ITI Project For E-Commerce Graduation Project with ASP.Net Core MVC <br/>
 Team Collaborations: <br/>
