@@ -14,7 +14,7 @@ open Microsoft.Extensions.Hosting
 
 type Startup private () =
     new (configuration: IConfiguration) as this =
-        Startup() then
+        Startup() then 
         this.Configuration <- configuration
 
     // This method gets called by the runtime. Use this method to add services to the container.
