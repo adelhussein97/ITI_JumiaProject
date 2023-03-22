@@ -1,0 +1,35 @@
+﻿namespace DomainLayer.Models.Enum
+{
+    public enum Governorate
+    {
+        Alexandria,
+        Assiut,
+        Aswan,
+        Beheira,
+        BaniSuef,
+        Cairo,
+        Daqahliya,
+        Damietta,
+        Fayyoum,
+        Gharbiya,
+        Giza,
+        Helwan,
+        Ismailia,
+        Kafr_ElSheikh,
+        Luxor,
+        MarsaMatrouh,
+        Minya,
+        Monofiya,
+        NewValley,
+        NorthSinai,
+        PortSaid,
+        Qalioubiya,
+        Qena,
+        RedSea,
+        Sharqiya,
+        Sohag,
+        SouthSinai,
+        Suez,
+        Tanta,
+    }
+}

@@ -1,17 +1,19 @@
-using DashboardMVCGraduation.Data;
+using DomainLayer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<EcommerceDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ITIConnection"));
+});
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<IdentityUser<Guid>, IdentityRole<Guid>>
+    (options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<EcommerceDbContext>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
