@@ -1,13 +1,16 @@
 using DomainLayer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<EcommerceDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ITIConnection"));
+   
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ITIConnection"),
+        b => b.MigrationsAssembly("DashboardMVCGraduation"));
 });
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

@@ -8,13 +8,9 @@ namespace DomainLayer.Models.CartItems
 {
     public class CartItem
     {
-        public int Id { get; set; }
-
         public int CartId { get; set; }
 
         public int ProductId { get; set; }
-
-        public int CustomerId { get; set; }
 
         public int? Quantity { get; set; }
 
@@ -22,6 +18,7 @@ namespace DomainLayer.Models.CartItems
 
         public int? TotalCost { get; set; }
 
-        public Customer Customer { get; set; } = null!;
+        public Cart? Cart { get; set; }
+
     }
 }

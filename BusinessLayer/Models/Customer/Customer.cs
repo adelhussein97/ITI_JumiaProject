@@ -24,19 +24,23 @@
 
         public string?  Tel2 { get; set; }
 
-        public int?  MasterCardId { get; set; }
+        public int? MasterId { get; set; }
 
         public DateTime?  RegDate { get; set; }
 
-        public  ICollection<Cart> Carts { set;  get; }
+        public  IEnumerable<Cart>? Carts { set;  get; }
 
         public Gender? Gender { get; set; }
 
+        public IEnumerable<CreditCard>? CreditCardList { get; set; }
+
         public Governorate?  Gov { get; set; }
 
-        public IEnumerable<MasterCard>?  MasterCard { get; set; }
+        public IEnumerable<Review>? ReviewsList { get; set; }
 
-        public virtual ICollection<Wishlist> Wishlists { get; } = new List<Wishlist>();
+        public IEnumerable<Wishlist> Wishlists { get; } = new List<Wishlist>();
+
+        public IEnumerable<Rate>? RateLists { get; set; }
 
     }
 }

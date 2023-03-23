@@ -8,20 +8,22 @@
 
         public DateTime? CreationDate { get; set; }
 
-        public DateTime? ShipDate { get; set; }
+        public float Discount { get; set; }
 
         public DateTime? PaymentDate { get; set; }
 
         public int? TotalCost { get; set; }
 
-        public CartStatus? StatusId { get; set; }
+        public int? StatusId { get; set; }
 
-        public int? PaymentMethodId { get; set; }
+        public CardType? PaymentMethodId { get; set; }
 
-        public Customer? Cust { get; set; }
-
-        public PaymentMethod? PaymentMethod { get; set; }
+        public Customer? CustCart { get; set; }
 
         public CartStatus? Status { get; set; }
+
+        public Shipping? Shipping { get; set; }
+
+        public IEnumerable<CartItem>? CartItems { get; set; }
     }
 }

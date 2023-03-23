@@ -30,6 +30,10 @@
 
         public IEnumerable<Category> Categories { get { return categories; } }
 
+        public IEnumerable<Review>? ProductReviews { get; set; }
+
+        public IEnumerable<Rate>? RateList { get; set; }
+
         public Product(string name, float unitPrice, bool isValid, int quantity,
             Category category, Brand brand, string? discription = null, byte? discountPercent = null)
         {
