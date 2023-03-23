@@ -4,7 +4,7 @@
     {
         public Guid Id { get; set; }
         public string Url { get; private set; }
-        public int PrdID { get; set; }
+        public long PrdID { get; set; }
         public Product Product { get; private set; } // Asocsiation Relation
         public PrdImage(string url, Product product)
         {
