@@ -1,6 +1,8 @@
 ﻿namespace DomainLayer.Models.Brands
 {
+
     // brand
+
     public class Brand
     {
         public int Id { get; set; }
