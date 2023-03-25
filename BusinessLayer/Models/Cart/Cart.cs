@@ -1,5 +1,6 @@
 ﻿namespace DomainLayer.Models.Carts
 {
+    // Cart Model
     public class Cart
     {
         public int Id { get; set; }
