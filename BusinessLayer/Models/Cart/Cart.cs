@@ -3,6 +3,7 @@
     // Cart Model
     public class Cart
     {
+        //properties
         public int Id { get; set; }
 
         public int? CustId { get; set; }
