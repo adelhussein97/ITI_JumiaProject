@@ -16,19 +16,21 @@
        public IEnumerable<Category> SubCategories { get { return subcategories; } }
 
        public IEnumerable<Product> Products { get { return products; } }
-       public Category(string name, Category? parentCategories = null)
-       {
-            Name = name;
-            ParentCategories = parentCategories;
-            subcategories = new List<Category>();
-            products = new List<Product>();
-       }
+       //public Category(string name, Category? parentCategories = null)
+       //{
+       //     Name = name;
+       //     ParentCategories = parentCategories;
+       //     subcategories = new List<Category>();
+       //     products = new List<Product>();
+       //}
 
-        // Using Private Constructor For EF Only because the EF not understand objects when create DB 
-        private Category() : this(null!, null)
-        {
+       // // Using Private Constructor For EF Only because the EF not understand objects when create DB 
+       // private Category() : this(null!, null)
+       // {
 
-        }
+       // }
+
+      
 
         public bool AddSubCategory(Category subcategory)
         {

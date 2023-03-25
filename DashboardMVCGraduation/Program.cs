@@ -1,24 +1,27 @@
 using DomainLayer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<EcommerceDbContext>(options =>
 {
-   
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ITIConnection"),
-        b => b.MigrationsAssembly("DashboardMVCGraduation"));
+    if (!options.IsConfigured)
+    {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("ITIConnection"),
+            b => b.MigrationsAssembly("DashboardMVCGraduation"));
+    }
 });
+
+//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<EcommerceDbContext>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentity<IdentityUser<Guid>, IdentityRole<Guid>>
     (options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<EcommerceDbContext>();
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddRazorPages();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
