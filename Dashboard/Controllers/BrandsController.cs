@@ -25,11 +25,15 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Brands
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? Filter = null)
         {
-            return _context.brands != null ?
-                        View(await _context.brands.ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.brands'  is null.");
+            //return _context.brands != null ?
+            //            View(await _context.brands.ToListAsync()) :
+            //            Problem("Entity set 'ApplicationDbContext.brands'  is null.");
+
+            var task = _context.brands
+                    .Where(b => Filter == null || b.Name.ToLower().Contains(Filter.ToLower()));
+            return View(await task.ToListAsync());
         }
 
         // GET: Brands/Details/5
