@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dashboard.MVC", "WebApplication1\Dashboard.MVC.csproj", "{54C366D3-44E6-49CC-9CF9-BC705C6B87AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dashboard.MVC", "Dashboard\Dashboard.MVC.csproj", "{54C366D3-44E6-49CC-9CF9-BC705C6B87AE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domains", "Domains\Domains.csproj", "{44517FF9-C515-4A23-9CE3-A678479C2477}"
 EndProject
