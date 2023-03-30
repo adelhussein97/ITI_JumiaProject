@@ -13,6 +13,7 @@ using WebApplication1.Models;
 namespace WebApplication1.Controllers
 {
     //test
+    //esnael commit
     [Authorize(Roles = "Admin")]
     public class BrandsController : Controller
     {
