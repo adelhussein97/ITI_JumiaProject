@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domains.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Models;
@@ -15,10 +17,12 @@ namespace WebApplication1.Controllers
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHostEnvironment _hostEnvironment;
 
-        public CategoriesController(ApplicationDbContext context)
+        public CategoriesController(ApplicationDbContext context,IHostEnvironment hostEnvironment)
         {
             _context = context;
+            _hostEnvironment = hostEnvironment;
         }
 
         // GET: Categories
@@ -62,13 +66,35 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
+                //string fileName = string.Empty;
+                //if (category.File !=null)
+                //{
+                //    string upload = Path.Combine(_hostEnvironment.ContentRootPath, "upload");
+                //    fileName = category.File.FileName;
+                //    string fullpath=Path.Combine(upload, fileName);
+                //  await  category.File.CopyToAsync(new FileStream(fullpath, FileMode.Create));
+                //} 
                 _context.Add(category);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(category);
-        }
 
+            //Category cat = new Category
+            //{
+            //    Id = category.Id,
+            //    Name = category.Name,
+            //    Description = category.Description,
+            //    ParentCategories = category.ParentCategories,
+            //    Image=fileName 
+               
+            //};
+                //ICategoryRepository.(cat);
+            }
+                return RedirectToAction(nameof(Index));
+            
+              
+           
+           
+        }
+            
         // GET: Categories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

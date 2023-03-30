@@ -3,10 +3,17 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
-<h1>Edit</h1>
-
-<h4>Category</h4>
+<div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active">Edit</li>
+    </ol>
+</div>
+<div class="p-5">
+    <div class="d-flex justify-content-center">
+        <h2><strong class="text-info">Edit</strong> </h2>
+    </div>
+    <h4>Category</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -30,13 +37,13 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
+                    <button class="btn btn-warning "> <a asp-action="Index"><strong class="text-dark">Back to List</strong></a></button>
+
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
