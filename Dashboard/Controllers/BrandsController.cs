@@ -12,6 +12,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+    //test
     [Authorize(Roles = "Admin")]
     public class BrandsController : Controller
     {
