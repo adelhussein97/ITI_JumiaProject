@@ -1,0 +1,160 @@
+﻿@model IEnumerable<WebApplication1.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Index</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Products</li>
+                </ol>
+            </div>
+
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h3 class="card-title"></h3>
+                            </div>
+                            <div class="row col-sm-8 d-flex flex-row justify-content-end">
+                                <button type="submit" class="col-1 btn btn-lg btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                                <input type="search" class="col-8 form-control form-control-lg" placeholder="Type your keywords here" value="">
+
+                                <a class="col-2 btn btn-primary" style="margin-left: 0.5em;" href="/Products/Create">Create New</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-striped dataTable dtr-inline">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        No.
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Discount
+                                    </th>
+                                    <th>
+                                        Discription
+                                    </th>
+                                    <th>
+                                        IsFeatured
+                                    </th>
+                                    <th>
+                                        Quantity
+                                    </th>
+                                    <th>
+                                        UnitPrice
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Brand
+                                    </th>
+                                    <th class="col-2">
+                                        Operation
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int rowNo = 0;
+                                }
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @(rowNo += 1)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DiscountPercent)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Discription)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IsFeatured)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Quantity)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UnitPrice)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.InsertingDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Brand.Name)
+                                        </td>
+                                       
+                                        <td class="col-2">
+                                            <div class="btn-group">
+                                                <a asp-action="Edit" asp-route-id="@item.Id" type="button" class="btn btn-info">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                                <a asp-action="Details" asp-route-id="@item.Id" type="button" class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                                <a asp-action="Delete" asp-route-id="@item.Id" type="button" class="btn btn-warning">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr class="d-none">
+                                    <th>Name</th>
+                                    <th>Name</th>
+                                    <th>Name</th>
+                                    <th>Name</th>
+                                    <th>Name</th>
+                                    <th>Name</th>
+                                    <th>Name</th>
+                                    <th>Name</th>
+                                    <th>Name</th>
+                                    <th>Name</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+<!-- /.content -->

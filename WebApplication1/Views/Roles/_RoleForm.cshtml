@@ -1,0 +1,12 @@
+﻿@model RoleDTO
+<form method="post" asp-action="Add">
+  <div class="row justify-content-between">
+   <div class=" mb-3 col-10">
+        <input asp-for="Name" class="form-control" placeholder="Add New Role" />
+    </div>
+    <div class="col-2" >
+        <button type="submit" class="btn btn-primary">Insert</button>
+    </div>
+  </div>
+    <span asp-validation-for="Name" class="text-danger"></span>
+</form>

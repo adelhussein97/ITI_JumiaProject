@@ -1,0 +1,22 @@
+﻿@model IEnumerable<UserDTO>;
+@{
+    ViewData["title"] = "users";
+}
+<h1>Users</h1>
+<div class="gap-5 justify-content-center ">
+    @foreach (var item in Model)
+    {
+        <div style="background-color:#aaaa" class="  mb-3   card-body text-center d-flex justify-content-between">
+            <div class="text-start">
+                <h2 class="w-100 fw-bold  card-title">User Name : @Html.DisplayFor(modelItem => item.UserName)</h2>
+                <h2 class="w-100 fw-bold  card-title">Full Name : @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName) </h2>
+                <h2 class="fw-bold">Email : @Html.DisplayFor(modelItem => item.Email)</h2>
+            </div>
+            <div class="d-flex justify-content-evenly flex-column">
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Details <i class="ms-2 fa-solid fa-bars-staggered"></i></a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete <i class="ms-2 fa-solid fa-trash-can"></i></a>
+            </div>
+        </div>
+
+    }
+</div>
