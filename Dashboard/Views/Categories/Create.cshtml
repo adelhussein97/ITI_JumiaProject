@@ -1,41 +1,56 @@
-﻿@model WebApplication1.Models.Category
+﻿@*@model Dashboard.MVC.ViewModel.CategoryViewModel*@
+@model WebApplication1.Models.Category
 
 @{
     ViewData["Title"] = "Create";
 }
-
-<h1>Create</h1>
-
-<h4>Category</h4>
+<div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active">Create</li>
+    </ol>
+</div>
+<div class="p-5">
+<div class="d-flex justify-content-center">
+        <h2><strong class="text-primary">Create</strong></h2>
+</div>
+    <h4>Category</h4>
 <hr />
+<div class="container justify-content-center">
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
+          @*  <div class="form-group">
+                <label asp-for="File" class="control-label"></label>
+                <input type="file"name="File" asp-for="File" class="form-control" />
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>*@
+                    <div class="form-group">
+                        <label asp-for="Image" class="control-label"></label>
+                        <input type="file" name="File" asp-for="Image" class="form-control" />
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary w-25" />
+                <button class="btn btn-warning "> <a asp-action="Index"><strong class="text-dark">Back to List</strong></a></button>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+
+</div>
 </div>
 
 @section Scripts {
