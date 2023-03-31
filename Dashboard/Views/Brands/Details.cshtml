@@ -23,9 +23,8 @@
 
 
 <div class="container m-3">
-    <div>
-    <h4>Brand</h4>
-    <hr />
+    <div class="m-4">
+    
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
@@ -37,7 +36,7 @@
 </div>
 <div>
         <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+        <a asp-action="Index" class="btn btn-warning">Back to List</a>
 </div>
 </div>
 
