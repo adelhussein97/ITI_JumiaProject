@@ -94,7 +94,7 @@ namespace WebApplication1.Controllers
                         var prdImage = new PrdImage()
                         {
                             Product = product,
-                            Url = "~/PrdImages/" + imageFileName
+                            Url = "./PrdImages/" + imageFileName
                         };
                         _context.prdImages.Add(prdImage);
                         await _context.SaveChangesAsync();
@@ -198,8 +198,8 @@ namespace WebApplication1.Controllers
             {
                 return NotFound();
             }
-            ViewData["BrandId"] = new SelectList(_context.brands, "Id", "Id", product.BrandId);
-            ViewData["CategoryId"] = new SelectList(_context.categories, "Id", "Id", product.CategoryId);
+            ViewData["BrandId"] = new SelectList(_context.brands, "Id", "Name", product.BrandId);
+            ViewData["CategoryId"] = new SelectList(_context.categories, "Id", "Name", product.CategoryId);
             return View(product);
         }
 
