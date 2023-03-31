@@ -25,6 +25,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\PrdImages\" />
+    <Folder Include="ViewModel\" />
+    <Folder Include="wwwroot\img\upload\" />
   </ItemGroup>
 
 </Project>
