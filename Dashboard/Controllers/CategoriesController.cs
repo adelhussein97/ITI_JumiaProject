@@ -27,7 +27,7 @@ namespace WebApplication1.Controllers
 
         // GET: Categories
         public async Task<IActionResult> Index(string? Filter = null)
-        {
+        {//test
             var task= _context.categories
                     .Where(c => Filter == null || c.Name.ToLower().Contains(Filter.ToLower()));
             return View(await task.ToListAsync());
