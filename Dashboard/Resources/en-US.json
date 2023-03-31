@@ -10,5 +10,13 @@
   "firstname": "First Name",
   "lastname": "Last Name",
   "passordconfirm": "confirm password",
-  "rig": "Register"
+  "rig": "Register",
+  "index": "Index",
+  "brands": "Brands",
+  "home": "Home",
+  "create": "Create",
+  "details": "Details",
+  "edit": "Edit",
+  "delete": "Delete",
+  "back": "Back To List "
 }

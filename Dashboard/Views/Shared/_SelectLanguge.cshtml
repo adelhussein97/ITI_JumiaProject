@@ -11,7 +11,7 @@
         new SelectListItem { Value = c.Name, Text = c.NativeName }).ToList();
     var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
 }
-<div>
+<div >
     <form method="post"
           asp-controller="Home"
           asp-action="setLanguge"

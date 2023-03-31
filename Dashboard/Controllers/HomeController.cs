@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Localization;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using System.Data;
 using System.Diagnostics;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -24,6 +27,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult setLanguge(string languge, string ReturnUrl)
         {
             Response.Cookies.Append(
