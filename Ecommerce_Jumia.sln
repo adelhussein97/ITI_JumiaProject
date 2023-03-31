@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dashboard.MVC", "Dashboard\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domains", "Domains\Domains.csproj", "{44517FF9-C515-4A23-9CE3-A678479C2477}"
 EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +22,7 @@ Global
 		{44517FF9-C515-4A23-9CE3-A678479C2477}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44517FF9-C515-4A23-9CE3-A678479C2477}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44517FF9-C515-4A23-9CE3-A678479C2477}.Release|Any CPU.Build.0 = Release|Any CPU
+
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

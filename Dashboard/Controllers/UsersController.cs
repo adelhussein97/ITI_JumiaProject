@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using WebApplication1.Data;
+using WebApplication1.Models;
 using WebApplication1.ModelsDTO;
 
 namespace WebApplication1.Controllers
@@ -24,6 +27,7 @@ namespace WebApplication1.Controllers
 
         public async Task<IActionResult> Index()
         {
+           
             var users = await _userManger.Users.Select(x => new UserDTO
             {
                 Id = x.Id,
@@ -32,6 +36,7 @@ namespace WebApplication1.Controllers
                 LastName = x.LastName,
                 UserName = x.UserName,
             }).ToListAsync();
+          
             return View(users);
         }
 

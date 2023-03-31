@@ -4,11 +4,27 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Details</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-action="Index">Brands</a></li>
+                    <li class="breadcrumb-item active">Brand Details</li>
+                </ol>
+            </div>
 
-<div>
-    <h4>Brand</h4>
-    <hr />
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+
+<div class="container m-3">
+    <div class="m-4">
+    
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
@@ -19,6 +35,8 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+        <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model?.Id">Edit</a> |
+        <a asp-action="Index" class="btn btn-warning">Back to List</a>
 </div>
+</div>
+
