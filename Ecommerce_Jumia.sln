@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dashboard.MVC", "Dashboard\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domains", "Domains\Domains.csproj", "{44517FF9-C515-4A23-9CE3-A678479C2477}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITI_Jumia.API", "ITI_Jumia.API\ITI_Jumia.API.csproj", "{2BA17BAD-41F6-4A6F-80F1-A8EEEA6516F3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{44517FF9-C515-4A23-9CE3-A678479C2477}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44517FF9-C515-4A23-9CE3-A678479C2477}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44517FF9-C515-4A23-9CE3-A678479C2477}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2BA17BAD-41F6-4A6F-80F1-A8EEEA6516F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2BA17BAD-41F6-4A6F-80F1-A8EEEA6516F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2BA17BAD-41F6-4A6F-80F1-A8EEEA6516F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2BA17BAD-41F6-4A6F-80F1-A8EEEA6516F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
