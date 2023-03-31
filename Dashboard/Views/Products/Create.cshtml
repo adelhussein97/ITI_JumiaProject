@@ -32,33 +32,33 @@
                     <div class="card-body">
                             <div class="form-group">
                                 <label asp-for="Name" class="control-label"></label>
-                                <input tabindex="0" asp-for="Name" class="form-control" />
-                                <span @*asp-validation-for="Name"*@ class="invalid-tooltip"></span>
+                                <input tabindex="0" required asp-for="Name" class="form-control" />
+                                <span @*asp-validation-for="Name"*@ class="invalid-tooltip">Insert Product Name</span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="DiscountPercent" class="control-label"></label>
-                                <input tabindex="1" asp-for="DiscountPercent" class="form-control" />
+                                <input tabindex="1" required asp-for="DiscountPercent" class="form-control" />
                                 <span @*asp-validation-for="DiscountPercent"*@ class="invalid-feedback"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Discription" class="control-label"></label>
-                                <input tabindex="2" asp-for="Discription" class="form-control" />
+                                <input tabindex="2" required asp-for="Discription" class="form-control" />
                                 <span @*asp-validation-for="Discription"*@ class="invalid-feedback"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="IsFeatured" class="control-label"></label>
-                                <input tabindex="3" asp-for="IsFeatured" class="form-control" />
+                                <input tabindex="3" required asp-for="IsFeatured" class="form-control" />
                                 <span @*asp-validation-for="IsFeatured"*@ class="invalid-feedback"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Quantity" class="control-label"></label>
-                                <input tabindex="4" asp-for="Quantity" class="form-control" />
+                                <input tabindex="4" required asp-for="Quantity" class="form-control" />
                                 <span @*asp-validation-for="Quantity"*@ class="invalid-feedback"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="UnitPrice" class="control-label"></label>
-                                <input tabindex="5" asp-for="UnitPrice" class="form-control" />
-                                <span @*asp-validation-for="UnitPrice"*@ class="invalid-feedback"></span>
+                                <input tabindex="5" required asp-for="UnitPrice" class="form-control" />
+                                <span @*asp-validation-for="UnitPrice"*@ class="invalid-feedback">Please Insert Unit Price</span>
                             </div>
                     </div>
                 </div>
@@ -68,18 +68,18 @@
                     <div class="card-body">
                             <div class="form-group">
                                 <label asp-for="InsertingDate" class="control-label"></label>
-                                <input tabindex="6" asp-for="InsertingDate" class="form-control" />
+                                <input required tabindex="6" asp-for="InsertingDate" class="form-control" />
                                 <span class="invalid-feedback">Select Date of Product</span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="BrandId" class="control-label"></label>
-                                <select tabindex="7" asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
+                                <select tabindex="7" required asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
                                 <span class="invalid-feedback">Choose Brand for Product</span>
 
                             </div>
                             <div class="form-group">
                                 <label asp-for="CategoryId" class="control-label"></label>
-                                <select tabindex="8" asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                                <select tabindex="8" required asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
                                 <span class="invalid-feedback">Choose Category for Product</span>
 
                             </div>
