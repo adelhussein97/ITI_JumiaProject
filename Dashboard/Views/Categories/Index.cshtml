@@ -80,12 +80,10 @@
                                             @Html.DisplayFor(modelItem => item.Name)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Name)
-
-@*                                            if(item.Image !null)
+                                         @if(item.Image !=null)
                                             {
-                                            <img src="~/img/upload/@item.Image" style="width:64px;" class="img-thumbnail" />
-                                            }*@
+                                            <img src="@item.Image" style="width:100%;height:100px" class="img-thumbnail" />
+                                            }
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Description)

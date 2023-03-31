@@ -17,9 +17,9 @@ namespace WebApplication1.Controllers
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly IHostEnvironment _hostEnvironment;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public CategoriesController(ApplicationDbContext context,IHostEnvironment hostEnvironment)
+        public CategoriesController(ApplicationDbContext context,IWebHostEnvironment hostEnvironment)
         {
             _context = context;
             _hostEnvironment = hostEnvironment;
@@ -62,34 +62,41 @@ namespace WebApplication1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Image,Description")] Category category)
+        public async Task<IActionResult> Create(IFormFile imgfile, [Bind("Id,Name,Image,Description")] Category category)
         {
             if (ModelState.IsValid)
             {
-                //string fileName = string.Empty;
-                //if (category.File !=null)
-                //{
-                //    string upload = Path.Combine(_hostEnvironment.ContentRootPath, "upload");
-                //    fileName = category.File.FileName;
-                //    string fullpath=Path.Combine(upload, fileName);
-                //  await  category.File.CopyToAsync(new FileStream(fullpath, FileMode.Create));
-                //} 
-                _context.Add(category);
-                await _context.SaveChangesAsync();
+                var saveImage = Path.Combine(_hostEnvironment.WebRootPath, "CatImages", imgfile.FileName);
+                string imageExtension = Path.GetExtension(imgfile.FileName);
+                if (imageExtension == ".jpg" || imageExtension == ".png" || imageExtension == ".tiff" || imageExtension == ".jpeg")
+                {
 
-            //Category cat = new Category
-            //{
-            //    Id = category.Id,
-            //    Name = category.Name,
-            //    Description = category.Description,
-            //    ParentCategories = category.ParentCategories,
-            //    Image=fileName 
-               
-            //};
-                //ICategoryRepository.(cat);
+
+                    #region Create New Object of Prd Images
+
+                    category.Image = "./CatImages/" + imgfile.FileName;
+                    #endregion
+
+                    #region Upload Image on Server Root and Save URL in DBs
+                    using (var uploadimg = new FileStream(saveImage, FileMode.Create))
+                    {
+                        await imgfile.CopyToAsync(uploadimg);
+
+                        ViewData["message"] = "The Selected File " + imgfile.FileName + " is Uploaded Successfully";
+                    }
+                    #endregion
+
+
+                    _context.Add(category);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    ViewData["message"] = "The Selected File " + imgfile.FileName + " not match .jpg | .png | .tiff";
+
+                }
             }
                 return RedirectToAction(nameof(Index));
-            
               
            
            
