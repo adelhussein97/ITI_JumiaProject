@@ -3,69 +3,103 @@
 @{
     ViewData["Title"] = "Create";
 }
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Create Product</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Products</li>
+                </ol>
+            </div>
 
-<h1>Create</h1>
-
-<h4>Product</h4>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+
+<form class="was-validated" asp-action="Create">
+<section class="content">
+    <div class="container-fluid">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+         <div asp-validation-summary="ModelOnly" class=" invalid-feedback"></div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input tabindex="0" asp-for="Name" class="form-control" />
+                                <span @*asp-validation-for="Name"*@ class="invalid-tooltip"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DiscountPercent" class="control-label"></label>
+                                <input tabindex="1" asp-for="DiscountPercent" class="form-control" />
+                                <span @*asp-validation-for="DiscountPercent"*@ class="invalid-feedback"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Discription" class="control-label"></label>
+                                <input tabindex="2" asp-for="Discription" class="form-control" />
+                                <span @*asp-validation-for="Discription"*@ class="invalid-feedback"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="IsFeatured" class="control-label"></label>
+                                <input tabindex="3" asp-for="IsFeatured" class="form-control" />
+                                <span @*asp-validation-for="IsFeatured"*@ class="invalid-feedback"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Quantity" class="control-label"></label>
+                                <input tabindex="4" asp-for="Quantity" class="form-control" />
+                                <span @*asp-validation-for="Quantity"*@ class="invalid-feedback"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UnitPrice" class="control-label"></label>
+                                <input tabindex="5" asp-for="UnitPrice" class="form-control" />
+                                <span @*asp-validation-for="UnitPrice"*@ class="invalid-feedback"></span>
+                            </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="DiscountPercent" class="control-label"></label>
-                <input asp-for="DiscountPercent" class="form-control" />
-                <span asp-validation-for="DiscountPercent" class="text-danger"></span>
+                <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="InsertingDate" class="control-label"></label>
+                                <input tabindex="6" asp-for="InsertingDate" class="form-control" />
+                                <span class="invalid-feedback">Select Date of Product</span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="BrandId" class="control-label"></label>
+                                <select tabindex="7" asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
+                                <span class="invalid-feedback">Choose Brand for Product</span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CategoryId" class="control-label"></label>
+                                <select tabindex="8" asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                                <span class="invalid-feedback">Choose Category for Product</span>
+
+                            </div>
+                            <div class="form-group">
+                                <input tabindex="9" type="file" class="form-control" aria-label="file example" required>
+                                <span class="invalid-feedback">Example invalid form file feedback file.jpg || file.png</span>
+                            </div>
+                            <div class="form-group float-right ms-2">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                            <div class="form-group float-right">
+                                <a class="btn btn-warning" asp-action="Index">Back to List</a>
+                            </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Discription" class="control-label"></label>
-                <input asp-for="Discription" class="form-control" />
-                <span asp-validation-for="Discription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IsFeatured" class="control-label"></label>
-                <input asp-for="IsFeatured" class="form-control" />
-                <span asp-validation-for="IsFeatured" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Quantity" class="control-label"></label>
-                <input asp-for="Quantity" class="form-control" />
-                <span asp-validation-for="Quantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UnitPrice" class="control-label"></label>
-                <input asp-for="UnitPrice" class="form-control" />
-                <span asp-validation-for="UnitPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="InsertingDate" class="control-label"></label>
-                <input asp-for="InsertingDate" class="form-control" />
-                <span asp-validation-for="InsertingDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BrandId" class="control-label"></label>
-                <select asp-for="BrandId" class ="form-control" asp-items="ViewBag.BrandId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+</section>
+</form>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
