@@ -23,10 +23,21 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? Filter = null, int? FilterCategory = null, int? FilterBrand = null)
         {
-            var applicationDbContext = _context.products.Include(p => p.Brand).Include(p => p.Category);
-            return View(await applicationDbContext.ToListAsync());
+            var task = _context.products
+                    .Where(c => Filter == null || c.Name.ToLower().Contains(Filter.ToLower()))
+                    .Where(c => FilterCategory == null ||
+                    (c.CategoryId == FilterCategory))
+                    .Where(c => FilterBrand == null ||
+                    (c.BrandId == FilterBrand))
+                    .Include(p=>p.Brand).Include(t => t.Category);
+
+            ViewData["BrandId"] = new SelectList(_context.brands, "Id", "Name");
+            ViewData["CategoryId"] = new SelectList(_context.categories, "Id", "Name");
+
+            return View(await task.ToListAsync());
+            
         }
 
         // GET: Products/Details/5
@@ -52,8 +63,8 @@ namespace WebApplication1.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
-            ViewData["BrandId"] = new SelectList(_context.brands, "Id", "Id");
-            ViewData["CategoryId"] = new SelectList(_context.categories, "Id", "Id");
+            ViewData["BrandId"] = new SelectList(_context.brands, "Id", "Name");
+            ViewData["CategoryId"] = new SelectList(_context.categories, "Id", "Name");
             return View();
         }
 
