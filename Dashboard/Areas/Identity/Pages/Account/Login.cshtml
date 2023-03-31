@@ -1,40 +1,44 @@
 ﻿@page
+@using System.Globalization;
 @model LoginModel
 
 @{
     ViewData["Title"] = "Log in";
 }
 
+@{
+    var isrtl = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+}
 <div style="margin-left:10px" class="row justify-content-center">
     <div class=" col-md-8">
-        <h1 class="text-center">@ViewData["Title"]</h1>
+        <h1 class="text-center">@localizer["login"]</h1>
         <section>
             <form  id="account" method="post">
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                 <div class="w-50 m-auto form-floating mb-3">
-                    <label asp-for="Input.Email" class="form-label">Email</label>
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label  class="form-label">@localizer["email"]</label>
+                    <input asp-for="Input.Email" class="form-control @(isrtl?"text-end":"text-start")" autocomplete="username" aria-required="true" placeholder="name@example.com" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="w-50 m-auto form-floating mb-3">
-                    <label asp-for="Input.Password" class="form-label">Password</label>
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.Password" class="form-label">@localizer["password"]</label>
+                    <input asp-for="Input.Password" class="form-control @(isrtl?"text-end":"text-start")" autocomplete="current-password" aria-required="true" placeholder="password" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
-                <div class=" justify-content-center checkbox row mb-3" style="margin-left:20px">
-                   <div class="col" style="text-align:end" >
+                <div class=" checkbox row mb-3" style="margin-left:10px">
+                   <div class="col" style="text-align:center " >
                         <label asp-for="Input.RememberMe" class="col form-label">
                         <input class=" form-check-input" asp-for="Input.RememberMe" />
                         @Html.DisplayNameFor(m => m.Input.RememberMe)
                     </label>
                    </div>
-                    <p class="col">
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    <p class="col"  >
+                        <a style="margin-left:60px" id="forgot-password" asp-page="./ForgotPassword">@localizer["forgetpassword"]</a>
                     </p>
                 </div>
                 <div class="w-25 m-auto">
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">@localizer["login"]</button>
                 </div>
               @*  <div>
                    

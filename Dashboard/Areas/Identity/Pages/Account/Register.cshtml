@@ -1,44 +1,47 @@
 ﻿@page
+@using System.Globalization;
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
 }
-
+@{
+    var isrtl = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+}
 
 
 <div style="margin-left:10px" class="row justify-content-center">
     <div class="col-md-10">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2 class="text-center">Create a new account.</h2>
+            <h2 class="text-center">@localizer["createnewaccount"]</h2>
             <hr />
               <div class="w-50 m-auto form-floating mb-3">
-                <label asp-for="Input.FirstName">First name</label>
-                <input asp-for="Input.FirstName" class="form-control"  aria-required="true" placeholder="First Name" />
+                <label asp-for="Input.FirstName">@localizer["firstname"]</label>
+                <input asp-for="Input.FirstName" class="text-end  form-control" aria-required="true" placeholder="First Name" />
                 <span asp-validation-for="Input.FirstName" class="text-danger"></span>
             </div>
             <div class="w-50 m-auto form-floating mb-3">
-                <label asp-for="Input.LastName">Last Name</label>
-                <input asp-for="Input.LastName" class="form-control"  aria-required="true" placeholder="Last Name" />
+                <label asp-for="Input.LastName">@localizer["lastname"]</label>
+                <input asp-for="Input.LastName" class="text-end  form-control" aria-required="true" placeholder="Last Name" />
                 <span asp-validation-for="Input.LastName" class="text-danger"></span>
             </div>
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="w-50 m-auto form-floating mb-3">
-                <label asp-for="Input.Email">Email</label>
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Input.Email">@localizer["email"]</label>
+                <input asp-for="Input.Email" class="text-end  form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
             <div class="w-50 m-auto form-floating mb-3">
-                <label asp-for="Input.Password">Password</label>
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="Input.Password">@localizer["password"]</label>
+                <input asp-for="Input.Password" class="text-end form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
             <div class="w-50 m-auto form-floating mb-3">
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="Input.ConfirmPassword">@localizer["passordconfirm"]</label>
+                <input asp-for="Input.ConfirmPassword" class="text-end  form-control" autocomplete="new-password" aria-required="true" placeholder="ConfirmPassword" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
             <div class="w-25 m-auto">
-                <button id="registerSubmit" type="submit" class="w-100  btn btn-lg btn-primary">Register</button>
+                <button id="registerSubmit" type="submit" class="w-100  btn btn-lg btn-primary">@localizer["rig"]</button>
 
             </div>
         </form>

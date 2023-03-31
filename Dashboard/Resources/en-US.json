@@ -1,2 +1,14 @@
 {
+  "hello": "Hello",
+  "login": "LogIn",
+  "register": "Register",
+  "logout": "Log Out",
+  "email": "Email",
+  "password": "Password",
+  "forgetpassword": "Forget your password?",
+  "createnewaccount": "Create New Account",
+  "firstname": "First Name",
+  "lastname": "Last Name",
+  "passordconfirm": "confirm password",
+  "rig": "Register"
 }
