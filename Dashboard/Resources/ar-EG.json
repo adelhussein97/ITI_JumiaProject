@@ -1,3 +1,14 @@
 {
-
+  "hello": "مرحبا",
+  "login": "تسجيل الدخول",
+  "register": "انشاء حساب",
+  "logout": "تسجيل خروج",
+  "forgetpassword": "هل نسيت كلمه المرور",
+  "email": "الحساب",
+  "password": "كلمه السر",
+  "createnewaccount": "انشاء حساب جديد",
+  "firstname": "الاسم الاول",
+  "lastname": "الاسم الثاني",
+  "passordconfirm": "تاكيد كلمه السر",
+  "rig": "انشاء"
 }
