@@ -16,10 +16,12 @@ namespace WebApplication1.Controllers
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _WebHost;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext context, IWebHostEnvironment WebHost)
         {
             _context = context;
+            this._WebHost = WebHost;
         }
 
         // GET: Products
@@ -73,16 +75,50 @@ namespace WebApplication1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,DiscountPercent,Discription,IsFeatured,Quantity,UnitPrice,InsertingDate,BrandId,CategoryId")] Product product)
+        public async Task<IActionResult> Create(IFormFile imgfile,[Bind("Id,Name,DiscountPercent,Discription,IsFeatured,Quantity,UnitPrice,InsertingDate,BrandId,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product);
-                await _context.SaveChangesAsync();
+                // Upload Image on Server
+                #region Check Image File Name
+                var saveImage = Path.Combine(_WebHost.WebRootPath, "PrdImages", imgfile.FileName);
+                string imageExtension = Path.GetExtension(imgfile.FileName); 
+                #endregion
+
+                if(imageExtension== ".jpg" || imageExtension == ".png" || imageExtension == ".tiff")
+                {
+                    #region Add New Product
+                    _context.Add(product);
+                    await _context.SaveChangesAsync();
+                    #endregion
+
+                    #region Create New Object of Prd Images
+                    PrdImage prdImage = new PrdImage();
+                    prdImage.ProductId = product.Id;
+                    prdImage.Url = "~/PrdImages/" + imgfile.FileName;
+                    #endregion
+
+                    #region Upload Image on Server Root and Save URL in DBs
+                    using (var uploadimg = new FileStream(saveImage, FileMode.Create))
+                    {
+                        await imgfile.CopyToAsync(uploadimg);
+                        _context.prdImages.Add(prdImage);
+                        await _context.SaveChangesAsync();
+                        ViewData["message"] = "The Selected File " + imgfile.FileName + " is Uploaded Successfully";
+                    } 
+                    #endregion
+
+                }
+                else
+                {
+                    ViewData["message"] = "The Selected File " + imgfile.FileName + " not match .jpg | .png | .tiff";
+
+                }
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BrandId"] = new SelectList(_context.brands, "Id", "Id", product.BrandId);
-            ViewData["CategoryId"] = new SelectList(_context.categories, "Id", "Id", product.CategoryId);
+            ViewData["BrandId"] = new SelectList(_context.brands, "Id", "Name", product.BrandId);
+            ViewData["CategoryId"] = new SelectList(_context.categories, "Id", "Name", product.CategoryId);
             return View(product);
         }
 

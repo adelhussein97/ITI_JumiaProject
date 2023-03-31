@@ -22,7 +22,7 @@
 </section>
 <hr />
 
-<form class="was-validated" asp-action="Create">
+<form method="post" class="was-validated" asp-action="Create" enctype="multipart/form-data">
 <section class="content">
     <div class="container-fluid">
         <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -72,19 +72,19 @@
                                 <span class="invalid-feedback">Select Date of Product</span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="BrandId" class="control-label"></label>
+                                <label asp-for="BrandId" class="control-label">Brand</label>
                                 <select tabindex="7" required asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
                                 <span class="invalid-feedback">Choose Brand for Product</span>
 
                             </div>
                             <div class="form-group">
-                                <label asp-for="CategoryId" class="control-label"></label>
+                                <label asp-for="CategoryId" class="control-label">Category</label>
                                 <select tabindex="8" required asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
                                 <span class="invalid-feedback">Choose Category for Product</span>
 
                             </div>
                             <div class="form-group">
-                                <input tabindex="9" type="file" class="form-control" aria-label="file example" required>
+                                <input tabindex="9" type="file" name="imgfile" class="form-control" aria-label="file example" required>
                                 <span class="invalid-feedback">Example invalid form file feedback file.jpg || file.png</span>
                             </div>
                             <div class="form-group float-right ms-2">
@@ -93,6 +93,11 @@
                             <div class="form-group float-right">
                                 <a class="btn btn-warning" asp-action="Index">Back to List</a>
                             </div>
+                            <div class="form-group">
+                                <span class="invalid-feedback">@ViewData["message"]</span>
+
+                            </div>
+
                     </div>
                 </div>
             </div>
