@@ -1,38 +1,46 @@
 ﻿@page
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer localizer
 @model IndexModel
 @{
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
 
-<h3>@ViewData["Title"]</h3>
+@{
+    var isrtl = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+}
+
+
 <partial name="_StatusMessage" for="StatusMessage" />
 <form id="profile-form" method="post" enctype="multipart/form-data">
 <div class="row">
-    <div class="col-md-6">   
+    <div class="col-md-6">
+            <h3 class=" @(isrtl?"text-start":"text-end")">@localizer["profile"]</h3>
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
-                <label asp-for="Username" class="form-label"></label>
-                <input asp-for="Username" class="form-control" placeholder="Please choose your username." disabled />
+                <label class="form-label ">@localizer["username"]</label>
+                <input asp-for="Username" class="form-control @(isrtl?"text-end":"text-start")" placeholder="Please choose your username." disabled />
             </div>
 
             <div class="form-floating mb-3">
-                <label asp-for="Input.FirstName" class="form-label"></label>
-                <input asp-for="Input.FirstName" class="form-control" placeholder="Please enter your phone number." />
+                <label class="form-label">@localizer["firstname"]</label>
+                <input asp-for="Input.FirstName" class="form-control @(isrtl?"text-end":"text-start")" placeholder="@localizer["firstname"]" />
                 <span asp-validation-for="Input.FirstName" class="text-danger"></span>
             </div>
              <div class="form-floating mb-3">
-                <label asp-for="Input.LastName" class="form-label"></label>
-                <input asp-for="Input.LastName" class="form-control" placeholder="Please enter your phone number."/>
+                <label class="form-label">@localizer["lastname"]</label>
+                <input asp-for="Input.LastName" class="form-control @(isrtl?"text-end":"text-start")" placeholder="@localizer["lastname"]" />
                 <span asp-validation-for="Input.LastName" class="text-danger"></span>
             </div>
 
                <div class="form-floating mb-3">
-                <label asp-for="Input.PhoneNumber" class="form-label"></label>
-                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Please enter your phone number."/>
+                <label class="form-label">@localizer["phonenumber"]</label>
+                <input asp-for="Input.PhoneNumber" class="form-control @(isrtl?"text-end":"text-start")" placeholder="@localizer["phonenumber"]" />
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
-            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>     
+            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">@localizer["save"]</button>     
     </div>
     <div class="col-md-6">
         <div class="form-group h-100">

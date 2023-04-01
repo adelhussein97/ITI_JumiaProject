@@ -4,7 +4,7 @@
   "register": "انشاء حساب",
   "logout": "تسجيل خروج",
   "forgetpassword": "هل نسيت كلمه المرور",
-  "email": "الحساب",
+  "email": "البريد الالكتروني",
   "password": "كلمه السر",
   "createnewaccount": "انشاء حساب جديد",
   "firstname": "الاسم الاول",
@@ -18,5 +18,18 @@
   "details": "التفاصيل",
   "edit": "تعديل",
   "delete": "حذف",
-  "back": "العوده للرئيسيه "
+  "back": "العوده للرئيسيه ",
+
+  //profile
+  "username": "اسم المستخدم",
+  "profile": "حسابي",
+  "phonenumber": "رقم التليفون",
+  "save": "حفظ",
+
+  //Email
+  "manageemail": "إدارة البريد الإلكتروني",
+  "sendverificationemail": "ارسل ايميل التفعيل",
+  "newemail": "البريد الالكتروني الجديد",
+  "changeemail": "تغيير البريد الالكتروني"
+
 }

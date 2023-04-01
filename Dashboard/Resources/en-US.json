@@ -18,5 +18,20 @@
   "details": "Details",
   "edit": "Edit",
   "delete": "Delete",
-  "back": "Back To List "
+  "back": "Back To List ",
+
+  //profile
+  "username": "Username",
+  "profile": "Profile",
+  "phonenumber": "Phonenumber",
+  "save": "Save",
+
+  //Email//
+  "manageemail": "Manage Email",
+  "sendverificationemail": "Send Verification Email",
+  "newemail": "New Email",
+  "changeemail": "Change Email"
+
+
+
 }
