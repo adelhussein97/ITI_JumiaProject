@@ -18,5 +18,18 @@
   "details": "التفاصيل",
   "edit": "تعديل",
   "delete": "حذف",
-  "back": "العوده للرئيسيه "
+  "back": "العوده للرئيسيه ",
+  //Categories
+  "no": "التسلسل",
+  "name": "الاسم",
+  "image": "الصورة",
+  "description": "الوصف",
+  "operation": "العمليات",
+  "categories": "الاصناف",
+  "search": "ادخل اسم الصنف هنا",
+  "nofilechosen": "لا يوجد اختيار",
+  "save": "حفظ"
+
+
+
 }

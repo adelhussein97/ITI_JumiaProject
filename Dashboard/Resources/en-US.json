@@ -18,5 +18,22 @@
   "details": "Details",
   "edit": "Edit",
   "delete": "Delete",
-  "back": "Back To List "
+  "back": "Back To List ",
+  //Categories
+  "no": "No.",
+  "name": "Name",
+  "image": "Image",
+  "description": "Description",
+  "operation": "Operation",
+  "categories": "Categories",
+  "search": "Search",
+  "nofilechosen": "NoFileChosen",
+  "save": "Save"
+
+
+
+
+
+
+
 }
