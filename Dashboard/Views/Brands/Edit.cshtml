@@ -1,4 +1,7 @@
-﻿@model WebApplication1.Models.Brand
+﻿@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer localizer
+@model WebApplication1.Models.Brand
 
 @{
     ViewData["Title"] = "Edit";
@@ -9,12 +12,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Edit</h1>
+                <h1>@localizer["edit"]</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a asp-action="Index">Brands</a></li>
-                    <li class="breadcrumb-item active">Edit</li>
+                    <li class="breadcrumb-item"><a asp-action="Index">@localizer["brands"]</a></li>
+                    <li class="breadcrumb-item active">@localizer["edit"]</li>
                 </ol>
             </div>
 
@@ -30,20 +33,21 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
                 <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
+                    <label asp-for="Name" class="control-label">@localizer["Name"]</label>
                     <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <input type="submit" value="@localizer["Save"]" class="btn btn-primary" /> |
+                    <a asp-action="Index" class="btn btn-warning">@localizer["Back to List"]</a>
                 </div>
             </form>
         </div>
     </div>
 
-    <div>
+    @*<div>
         <a asp-action="Index" class="btn btn-warning">Back to List</a>
-    </div>
+    </div>*@
 </div>
 
 
