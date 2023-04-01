@@ -1,4 +1,5 @@
 {
+// Main Keywords
   "hello": "Hello",
   "login": "LogIn",
   "register": "Register",
@@ -19,7 +20,6 @@
   "edit": "Edit",
   "delete": "Delete",
   "back": "Back To List ",
-
   //Brands
   "Type your keywords here": "Type your keywords here",
   "No.": "No.",
@@ -35,6 +35,18 @@
   "Personal Data": "Personal Data",
   "Your account contains personal data that you have given us. This page allows you to download or delete that data.": "Your account contains personal data that you have given us. This page allows you to download or delete that data.",
   "Deleting this data will permanently remove your account, and this cannot be recovered.": "Deleting this data will permanently remove your account, and this cannot be recovered.",
+  "Download": "Download"
+  //profile
+  "username": "Username",
+  "profile": "Profile",
+  "phonenumber": "Phonenumber",
+  "save": "Save",
+
+  //Email//
+  "manageemail": "Manage Email",
+  "sendverificationemail": "Send Verification Email",
+  "newemail": "New Email",
+  "changeemail": "Change Email"
   "Download": "Download",
   "Delete Personal Data": "Delete Personal Data",
   "Delete data and close my account": "Delete data and close my account",

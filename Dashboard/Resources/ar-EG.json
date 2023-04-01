@@ -1,10 +1,11 @@
 {
+// Main Keywords
   "hello": "مرحبا",
   "login": "تسجيل الدخول",
   "register": "انشاء حساب",
   "logout": "تسجيل خروج",
   "forgetpassword": "هل نسيت كلمه المرور",
-  "email": "الحساب",
+  "email": "البريد الالكتروني",
   "password": "كلمه السر",
   "createnewaccount": "انشاء حساب جديد",
   "firstname": "الاسم الاول",
@@ -19,7 +20,6 @@
   "edit": "تعديل",
   "delete": "حذف",
   "back": "العوده للرئيسيه ",
-
   //Brands
   "Type your keywords here": "البحث عن طريق الاسم",
   "No.": "رقم",
@@ -45,4 +45,16 @@
   "Email": "البريد الإلكترونى",
   "Delete User": "حذف مستخدم",
   "User Details": "تفاصيل المستخدم"
+  "Download": "تحميل"
+  //profile
+  "username": "اسم المستخدم",
+  "profile": "حسابي",
+  "phonenumber": "رقم التليفون",
+  "save": "حفظ",
+
+  //Email
+  "manageemail": "إدارة البريد الإلكتروني",
+  "sendverificationemail": "ارسل ايميل التفعيل",
+  "newemail": "البريد الالكتروني الجديد",
+  "changeemail": "تغيير البريد الالكتروني"
 }
