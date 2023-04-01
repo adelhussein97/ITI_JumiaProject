@@ -1,4 +1,10 @@
-﻿@model IEnumerable<WebApplication1.Models.Brand>
+﻿
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer localizer
+
+
+@model IEnumerable<WebApplication1.Models.Brand>
 
 @{
     ViewData["Title"] = "Index";
@@ -34,12 +40,12 @@
                                     <i class="fa fa-search"></i>
                                 </button>
                                 <form asp-action="Index">
-                                    <input type="search"  name="Filter" onchange="document.getElementById('btnSubmit').click();" class="col-8 form-control form-control-lg" placeholder="Type your keywords here" value="">
+                                    <input type="search" name="Filter" onchange="document.getElementById('btnSubmit').click();" class="col-8 form-control form-control-lg" placeholder="@localizer["Type your keywords here"]" value="">
                                     <input id="btnSubmit" hidden type="submit" value="submit" />
                                 </form>
                                 @*<input type="search" class="col-8 form-control form-control-lg" placeholder="Type your keywords here" value="">*@
 
-                                <a class="col-2 btn btn-primary" style="margin-left: 0.5em;" asp-action="Create">Create New</a>
+                                <a class="col-2 btn btn-primary" style="margin-left: 0.5em;" asp-action="Create">@localizer["create"]</a>
                                 
                             </div>
                         </div>
@@ -50,14 +56,14 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        No.
+                                        @localizer["No."]
                                     </th>
                                     <th>
-                                        Name
+                                        @localizer["Name"]
                                     </th>
                                     
                                     <th class="col-2">
-                                        Operation
+                                        @localizer["Operation"]
                                     </th>
                                 </tr>
                             </thead>
@@ -78,13 +84,13 @@
 
                                         <td class="col-2">
                                             <div class="btn-group">
-                                                <a asp-action="Edit" asp-route-id="@item.Id" type="button" title="Edit" class="btn btn-info">
+                                                <a asp-action="Edit" asp-route-id="@item.Id" type="button" title="@localizer["edit"]" class="btn btn-info">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
-                                                <a asp-action="Delete" asp-route-id="@item.Id" type="button" title="Delete" class="btn btn-danger">
+                                                <a asp-action="Delete" asp-route-id="@item.Id" type="button" title="@localizer["delete"]" class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
-                                                <a asp-action="Details" asp-route-id="@item.Id" type="button" title="Details" class="btn btn-warning">
+                                                <a asp-action="Details" asp-route-id="@item.Id" type="button" title="@localizer["details"]" class="btn btn-warning">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                             </div>
