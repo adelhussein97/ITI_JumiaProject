@@ -7,16 +7,11 @@
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Create Product</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li class="breadcrumb-item active">Products</li>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">@localizer["home"]</a></li>
+                    <li class="breadcrumb-item  active"><a asp-controller="Products" asp-action="Index">@localizer["product"]</a></li>
+                    <li class="breadcrumb-item active">@localizer["create"]</li>
                 </ol>
-            </div>
-
         </div>
     </div><!-- /.container-fluid -->
 </section>
@@ -31,32 +26,32 @@
                 <div class="card">
                     <div class="card-body">
                             <div class="form-group">
-                                <label asp-for="Name" class="control-label"></label>
+                                <label asp-for="Name" class="control-label">@localizer["name"]</label>
                                 <input tabindex="0" required asp-for="Name" class="form-control" />
                                 <span @*asp-validation-for="Name"*@ class="invalid-feedback">Insert Product Name</span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="DiscountPercent" class="control-label"></label>
+                                <label asp-for="DiscountPercent" class="control-label">@localizer["discount"]</label>
                                 <input tabindex="1" required asp-for="DiscountPercent" class="form-control" />
                                 <span @*asp-validation-for="DiscountPercent"*@ class="invalid-feedback"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Discription" class="control-label"></label>
+                                <label asp-for="Discription" class="control-label">@localizer["description"]</label>
                                 <input tabindex="2" required asp-for="Discription" class="form-control" />
                                 <span @*asp-validation-for="Discription"*@ class="invalid-feedback"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="IsFeatured" class="control-label"></label>
+                                <label asp-for="IsFeatured" class="control-label">@localizer["feature"]</label>
                                 <input tabindex="3" required asp-for="IsFeatured" class="form-control" />
                                 <span @*asp-validation-for="IsFeatured"*@ class="invalid-feedback"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Quantity" class="control-label"></label>
+                                <label asp-for="Quantity" class="control-label">@localizer["quantity"]</label>
                                 <input tabindex="4" required asp-for="Quantity" class="form-control" />
                                 <span @*asp-validation-for="Quantity"*@ class="invalid-feedback"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="UnitPrice" class="control-label"></label>
+                                <label asp-for="UnitPrice" class="control-label">@localizer["price"]</label>
                                 <input tabindex="5" required asp-for="UnitPrice" class="form-control" />
                                 <span @*asp-validation-for="UnitPrice"*@ class="invalid-feedback">Please Insert Unit Price</span>
                             </div>
@@ -67,18 +62,18 @@
                 <div class="card">
                     <div class="card-body">
                             <div class="form-group">
-                                <label asp-for="InsertingDate" class="control-label"></label>
+                                <label asp-for="InsertingDate" class="control-label">@localizer["date"]</label>
                                 <input required tabindex="6" asp-for="InsertingDate" class="form-control" />
                                 <span class="invalid-feedback">Select Date of Product</span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="BrandId" class="control-label">Brand</label>
+                                <label asp-for="BrandId" class="control-label">@localizer["brand"]</label>
                                 <select tabindex="7" required asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
                                 <span class="invalid-feedback">Choose Brand for Product</span>
 
                             </div>
                             <div class="form-group">
-                                <label asp-for="CategoryId" class="control-label">Category</label>
+                                <label asp-for="CategoryId" class="control-label">@localizer["category"]</label>
                                 <select tabindex="8" required asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
                                 <span class="invalid-feedback">Choose Category for Product</span>
 
@@ -88,10 +83,10 @@
                                 <span class="invalid-feedback">Example invalid form file feedback file.jpg || file.png</span>
                             </div>
                             <div class="form-group float-right ms-2">
-                                <input type="submit" value="Create" class="btn btn-primary" />
+                                <input type="submit" value=@localizer["create"] class="btn btn-primary" />
                             </div>
                             <div class="form-group float-right">
-                                <a class="btn btn-warning" asp-action="Index">Back to List</a>
+                                <a class="btn btn-warning" asp-action="Index">@localizer["back"]</a>
                             </div>
                             <div class="form-group">
                                 <span class="invalid-feedback">@ViewData["message"]</span>
