@@ -22,8 +22,6 @@
   "back": "Back To List ",
   //Categories
   "image": "Image",
-  "description": "Description",
-  "operation": "Operation",
   "categories": "Categories",
   "search": "Search",
   "nofilechosen": "NoFileChosen",
@@ -61,12 +59,11 @@
   "Personal Data": "Personal Data",
   "Your account contains personal data that you have given us. This page allows you to download or delete that data.": "Your account contains personal data that you have given us. This page allows you to download or delete that data.",
   "Deleting this data will permanently remove your account, and this cannot be recovered.": "Deleting this data will permanently remove your account, and this cannot be recovered.",
-  "Download": "Download"
+  "Download": "Download",
   //profile
   "username": "Username",
   "profile": "Profile",
   "phonenumber": "Phonenumber",
-  "save": "Save",
 
   //Email//
   "manageemail": "Manage Email",
