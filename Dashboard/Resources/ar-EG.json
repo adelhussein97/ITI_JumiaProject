@@ -20,6 +20,13 @@
   "edit": "تعديل",
   "delete": "حذف",
   "back": "العوده للرئيسيه ",
+  //Categories
+  "image": "الصورة",
+  "operation": "العمليات",
+  "categories": "الاصناف",
+  "search": "ادخل اسم الصنف هنا",
+  "nofilechosen": "لا يوجد اختيار",
+  "save": "حفظ",
   //Products
   "product": "المنتجات",
   "no": "م",
@@ -68,5 +75,5 @@
   "footercopy": "حقوق النشر © 2023-2024",
   "footerteam": "فريق وزراة الاتصالات ITI ",
   "footerreserve": "جميع الحقوق محفوظ"
-  
+ 
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Domains.Contracts;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -68,7 +68,7 @@ namespace WebApplication1.Controllers
             {
                 var saveImage = Path.Combine(_hostEnvironment.WebRootPath, "CatImages", imgfile.FileName);
                 string imageExtension = Path.GetExtension(imgfile.FileName);
-                if (imageExtension == ".jpg" || imageExtension == ".png" || imageExtension == ".tiff" || imageExtension == ".jpeg")
+                if (imageExtension == ".jpg" || imageExtension == ".png" || imageExtension == ".tiff" || imageExtension == ".jpeg"  || imageExtension == ".gif")
                 {
 
 
@@ -92,7 +92,7 @@ namespace WebApplication1.Controllers
                 }
                 else
                 {
-                    ViewData["message"] = "The Selected File " + imgfile.FileName + " not match .jpg | .png | .tiff";
+                    ViewData["message"] = "The Selected File " + imgfile.FileName + " not match .jpg | .png | .tiff | .gif";
 
                 }
             }

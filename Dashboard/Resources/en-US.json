@@ -20,6 +20,14 @@
   "edit": "Edit",
   "delete": "Delete",
   "back": "Back To List ",
+  //Categories
+  "image": "Image",
+  "description": "Description",
+  "operation": "Operation",
+  "categories": "Categories",
+  "search": "Search",
+  "nofilechosen": "NoFileChosen",
+  "save": "Save",
 
   // Products
   "product": "Products",
