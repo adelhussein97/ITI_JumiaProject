@@ -1,4 +1,7 @@
-﻿@model WebApplication1.Models.Brand
+﻿@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer localizer
+@model WebApplication1.Models.Brand
 
 @{
     ViewData["Title"] = "Details";
@@ -8,12 +11,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Details</h1>
+                <h1>@localizer["details"]</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a asp-action="Index">Brands</a></li>
-                    <li class="breadcrumb-item active">Brand Details</li>
+                    <li class="breadcrumb-item"><a asp-action="Index">@localizer["brands"]</a></li>
+                    <li class="breadcrumb-item active">@localizer["details"]</li>
                 </ol>
             </div>
 
@@ -35,8 +38,8 @@
     </dl>
 </div>
 <div>
-        <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model?.Id">Edit</a> |
-        <a asp-action="Index" class="btn btn-warning">Back to List</a>
+        <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model?.Id">@localizer["edit"]</a> |
+        <a asp-action="Index" class="btn btn-warning">@localizer["Back to List"]</a>
 </div>
 </div>
 
