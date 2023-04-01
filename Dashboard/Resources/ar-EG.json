@@ -18,5 +18,22 @@
   "details": "التفاصيل",
   "edit": "تعديل",
   "delete": "حذف",
-  "back": "العوده للرئيسيه "
+  "back": "العوده للرئيسيه ",
+
+  //Brands
+  "Type your keywords here": "البحث عن طريق الاسم",
+  "No.": "رقم",
+  "Name": "الإسم",
+  "Operation": "العملية ",
+  "Insert Brand Name": "ادخل اسم الماركة ",
+  "Back to List": "الرجوع للقائمة",
+  "Are you sure you want to delete this?": "هل انت متأكد من حذف هذا؟",
+  "Save": "حفظ",
+  "Change password": "تغير كلمة المرور",
+  "Please enter your old password.": "من فضلك ادخل كلمة المرور القديمة",
+  "Update password": "تحديث كامة المرور",
+  "Personal Data": "معلومات شخصية",
+  "Your account contains personal data that you have given us. This page allows you to download or delete that data.": "يحتوي حسابك على بيانات شخصية قدمتها لنا. تتيح لك هذه الصفحة تنزيل هذه البيانات أو حذفها.",
+  "Deleting this data will permanently remove your account, and this cannot be recovered.": "سيؤدي حذف هذه البيانات إلى إزالة حسابك نهائيًا ، ولا يمكن استرداد ذلك.",
+  "Download": "تحميل"
 }
