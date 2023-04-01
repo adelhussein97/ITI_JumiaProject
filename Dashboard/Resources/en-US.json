@@ -35,6 +35,15 @@
   "Personal Data": "Personal Data",
   "Your account contains personal data that you have given us. This page allows you to download or delete that data.": "Your account contains personal data that you have given us. This page allows you to download or delete that data.",
   "Deleting this data will permanently remove your account, and this cannot be recovered.": "Deleting this data will permanently remove your account, and this cannot be recovered.",
-  "Download": "Download"
+  "Download": "Download",
+  "Delete Personal Data": "Delete Personal Data",
+  "Delete data and close my account": "Delete data and close my account",
+
+  //Users
+  "User Name": "User Name",
+  "Full Name": "Full Name",
+  "Email": "Email",
+  "Delete User": "Delete User",
+  "User Details": "User Details"
 
 }

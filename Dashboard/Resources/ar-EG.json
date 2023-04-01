@@ -35,5 +35,14 @@
   "Personal Data": "معلومات شخصية",
   "Your account contains personal data that you have given us. This page allows you to download or delete that data.": "يحتوي حسابك على بيانات شخصية قدمتها لنا. تتيح لك هذه الصفحة تنزيل هذه البيانات أو حذفها.",
   "Deleting this data will permanently remove your account, and this cannot be recovered.": "سيؤدي حذف هذه البيانات إلى إزالة حسابك نهائيًا ، ولا يمكن استرداد ذلك.",
-  "Download": "تحميل"
+  "Download": "تحميل",
+  "Delete Personal Data": "حذف البيانات الشخصية",
+  "Delete data and close my account": "حذف البيانات و غلق حسابى",
+
+  //Users
+  "User Name": "اسم المستخدم",
+  "Full Name": "الاسم كامل",
+  "Email": "البريد الإلكترونى",
+  "Delete User": "حذف مستخدم",
+  "User Details": "تفاصيل المستخدم"
 }
