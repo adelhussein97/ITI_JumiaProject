@@ -1,14 +1,30 @@
 ﻿@model WebApplication1.Models.Product
+@using System.Globalization;
 
 @{
     ViewData["Title"] = "Delete";
 }
+@{
+    var isrtl = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+}
 
-<h1>Delete</h1>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+        <h3>@localizer["msgdelete"]</h3>
+    <div class="container-fluid">
+        <div class="row mb-2 ">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item @(isrtl ? "text-start" : "text-end")"><a asp-controller="Home" asp-action="Index">@localizer["home"]</a></li>
+                <li class="breadcrumb-item  active"><a asp-controller="Products" asp-action="Index">@localizer["product"]</a></li>
+                <li class="breadcrumb-item active">@localizer["delete"]</li>
+            </ol>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Product</h4>
+        <div>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -47,29 +63,13 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.UnitPrice)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.InsertingDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.InsertingDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Brand.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category.Id)
-        </dd>
     </dl>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value=@localizer["delete"] class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-warning">@localizer["back"] </a>
     </form>
 </div>
+</div>
+</section>

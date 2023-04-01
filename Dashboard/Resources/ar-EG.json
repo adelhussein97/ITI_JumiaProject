@@ -13,10 +13,34 @@
   "rig": "انشاء",
   "index": "الرئيسيه",
   "brands": "الماركات",
-  "home": "الاساسي",
+  "home": "الرئيسية",
   "create": "انشاء",
   "details": "التفاصيل",
   "edit": "تعديل",
   "delete": "حذف",
-  "back": "العوده للرئيسيه "
+  "back": "العوده للرئيسيه ",
+  //Products
+  "product": "المنتجات",
+  "no": "م",
+  "name": "الاسم",
+  "discount": "الخصم",
+  "description": "الوصف",
+  "quantity": "الكمية",
+  "price": "سعر الوحدة",
+  "operation": "العمليات",
+  "brand": "الماركة",
+  "searchprd": "بحث بالمنتج",
+  "searchbrand": "بحث بالماركة",
+  "searchcat": "بحث بالصنف",
+  "feature": "مفضل أم لا",
+  "date": "التاريخ",
+  "category": "الصنف",
+  "msgdelete": "هل انت متاكد من حذف المنتج !!",
+
+
+
+  //Footer
+  "footercopy": "حقوق النشر © 2023-2024",
+  "footerteam": "فريق وزراة الاتصالات ITI ",
+  "footerreserve": "جميع الحقوق محفوظ"
 }

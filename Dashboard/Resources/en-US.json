@@ -18,5 +18,30 @@
   "details": "Details",
   "edit": "Edit",
   "delete": "Delete",
-  "back": "Back To List "
+  "back": "Back To List ",
+  // Products
+  "product": "Products",
+  "no": "No.",
+  "name": "Name",
+  "discount": "Discount",
+  "description": "Description",
+  "quantity": "Quantity",
+  "price": "UnitPrice",
+  "operation": "Operations",
+  "brand": "Brand",
+  "searchprd": "Filter with Product",
+  "searchbrand": "Filter with Brand",
+  "searchcat": "Flter with Category",
+  "feature": "Is Feature",
+  "date": "Date",
+  "category": "Category",
+  "msgdelete": "Are you sure you want to delete this?",
+
+
+
+  //Footer
+  "footercopy": "Copyright © 2023-2024",
+  "footerteam": " ITI Team Full Stack .Net Developer.",
+  "footerreserve": "All rights reserved."
+
 }

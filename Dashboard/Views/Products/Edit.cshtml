@@ -4,70 +4,103 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>Product</h4>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">@localizer["home"]</a></li>
+                <li class="breadcrumb-item  active"><a asp-controller="Products" asp-action="Index">@localizer["product"]</a></li>
+                <li class="breadcrumb-item active">@localizer["edit"]</li>
+            </ol>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DiscountPercent" class="control-label"></label>
-                <input asp-for="DiscountPercent" class="form-control" />
-                <span asp-validation-for="DiscountPercent" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Discription" class="control-label"></label>
-                <input asp-for="Discription" class="form-control" />
-                <span asp-validation-for="Discription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IsFeatured" class="control-label"></label>
-                <input asp-for="IsFeatured" class="form-control" />
-                <span asp-validation-for="IsFeatured" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Quantity" class="control-label"></label>
-                <input asp-for="Quantity" class="form-control" />
-                <span asp-validation-for="Quantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UnitPrice" class="control-label"></label>
-                <input asp-for="UnitPrice" class="form-control" />
-                <span asp-validation-for="UnitPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="InsertingDate" class="control-label"></label>
-                <input asp-for="InsertingDate" class="form-control" />
-                <span asp-validation-for="InsertingDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BrandId" class="control-label"></label>
-                <select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
-                <span asp-validation-for="BrandId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<form class="was-validated" asp-action="Edit" enctype="multipart/form-data">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div asp-validation-summary="ModelOnly" class=" invalid-feedback"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label">@localizer["name"]</label>
+                                <input tabindex="0" required asp-for="Name" class="form-control" />
+                                <span @*asp-validation-for="Name"*@ class="invalid-feedback">Insert Product Name</span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DiscountPercent" class="control-label">@localizer["discount"]</label>
+                                <input tabindex="1" required asp-for="DiscountPercent" class="form-control" />
+                                <span @*asp-validation-for="DiscountPercent"*@ class="invalid-feedback"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Discription" class="control-label">@localizer["description"]</label>
+                                <input tabindex="2" required asp-for="Discription" class="form-control" />
+                                <span @*asp-validation-for="Discription"*@ class="invalid-feedback"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="IsFeatured" class="control-label">@localizer["feature"]</label>
+                                <input tabindex="3" required asp-for="IsFeatured" class="form-control" />
+                                <span @*asp-validation-for="IsFeatured"*@ class="invalid-feedback"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Quantity" class="control-label">@localizer["quantity"]</label>
+                                <input tabindex="4" required asp-for="Quantity" class="form-control" />
+                                <span @*asp-validation-for="Quantity"*@ class="invalid-feedback"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UnitPrice" class="control-label">@localizer["price"]</label>
+                                <input tabindex="5" required asp-for="UnitPrice" class="form-control" />
+                                <span @*asp-validation-for="UnitPrice"*@ class="invalid-feedback">Please Insert Unit Price</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="InsertingDate" class="control-label">@localizer["date"]</label>
+                                <input required tabindex="6" asp-for="InsertingDate" class="form-control" />
+                                <span class="invalid-feedback">Select Date of Product</span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="BrandId" class="control-label">@localizer["brand"]</label>
+                                <select tabindex="7" required asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
+                                <span class="invalid-feedback">Choose Brand for Product</span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CategoryId" class="control-label">@localizer["category"]</label>
+                                <select tabindex="8" required asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                                <span class="invalid-feedback">Choose Category for Product</span>
+
+                            </div>
+                            <div class="form-group">
+                                <input tabindex="9" type="file" multiple name="imgfile" class="form-control" aria-label="file example" required>
+                                <span class="invalid-feedback">Example invalid form file feedback file.jpg || file.png</span>
+                            </div>
+                            <div class="form-group float-right ms-2">
+                                <input type="submit" value=@localizer["edit"] class="btn btn-info" />
+                            </div>
+                            <div class="form-group float-right">
+                                <a class="btn btn-warning" asp-action="Index">@localizer["back"]</a>
+                            </div>
+                            <div class="form-group">
+                                <span class="invalid-feedback">@ViewData["message"]</span>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
