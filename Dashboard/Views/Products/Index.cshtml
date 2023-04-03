@@ -12,17 +12,11 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Index</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item @(isrtl ? "text-start" : "text-end")" "><a asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li class="breadcrumb-item active @(isrtl ? "text-start" : "text-end")" ">Products</li>
-                </ol>
-            </div>
-
+        <div class="row mb-2 ">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item @(isrtl ? "text-start" : "text-end")"><a asp-controller="Home" asp-action="Index">@localizer["home"]</a></li>
+                    <li class="breadcrumb-item active @(isrtl ? "text-start" : "text-end")">@localizer["product"]</li>
+                </ol>   
         </div>
     </div><!-- /.container-fluid -->
 </section>
@@ -38,21 +32,21 @@
                        <li> <button type="submit" id="btnSubmit" class="btn btn-lg btn-default">
                             <i class="fa fa-search"></i>
                         </button></li>
-                    <li><input type="search" name="Filter" onchange="document.getElementById('btnSubmit').click();" class="form-control form-control-lg" placeholder="Type your keywords here" value=""></li>
+                    <li><input type="search" name="Filter" onchange="document.getElementById('btnSubmit').click();" class="form-control form-control-lg" placeholder=@localizer["searchprd"] value=""></li>
                         <li>
                             <select name="FilterBrand" onchange="document.getElementById('btnSubmit').click();" class="form-control form-control-lg" asp-items="ViewBag.BrandId">
-                                <option selected disabled value="">Filter with Brand...</option>
+                                <option selected disabled value="">@localizer["searchbrand"]</option>
 
                         </select>
                     </li>
                         <li>
                             <select name="FilterCategory" onchange="document.getElementById('btnSubmit').click();" class="form-control form-control-lg" asp-items="ViewBag.CategoryId">
-                                <option selected disabled value="">Filter with Category...</option>
+                                <option selected disabled value="">@localizer["searchcat"]</option>
                         </select>
                     </li>
 
 
-                    <a class="btn btn-primary" style="margin-left: 0.5em;" href="/Products/Create">Create</a>
+                        <a class="btn btn-primary" style="margin-left: 0.5em;" href="/Products/Create">@localizer["create"]</a>
                 </ol>
                     </form>
             </div>
@@ -69,38 +63,32 @@
                     
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example2" class="table table-bordered table-striped dataTable dtr-inline">
+                        <table id="example2" class="table text-center table-bordered table-striped dataTable dtr-inline">
                             <thead>
                                 <tr>
                                     <th>
-                                        No.
+                                        @localizer["no"]
                                     </th>
                                     <th>
-                                        Name
+                                        @localizer["name"]
                                     </th>
                                     <th>
-                                        Discount
+                                        @localizer["discount"]
+                                    </th>
+                                    <th class="d-none d-md-block">
+                                        @localizer["description"]
                                     </th>
                                     <th>
-                                        Discription
+                                        @localizer["quantity"]
                                     </th>
                                     <th>
-                                        IsFeatured
+                                        @localizer["price"]
                                     </th>
-                                    <th>
-                                        Quantity
-                                    </th>
-                                    <th>
-                                        UnitPrice
-                                    </th>
-                                    <th>
-                                        Date
-                                    </th>
-                                    <th>
-                                        Brand
+                                    <th class="d-none d-md-block">
+                                        @localizer["brand"]
                                     </th>
                                     <th class="col-2">
-                                        Operation
+                                        @localizer["operation"]
                                     </th>
                                 </tr>
                             </thead>
@@ -123,18 +111,14 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Discription)
                                         </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.IsFeatured)
-                                        </td>
+                                       
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Quantity)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.UnitPrice)
                                         </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.InsertingDate)
-                                        </td>
+                                       
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Brand.Name)
                                         </td>
@@ -142,13 +126,13 @@
                                         <td class="col-2">
                                             <div class="btn-group">
                                                 <a asp-action="Edit" asp-route-id="@item.Id" type="button" class="btn btn-info">
-                                                    <i class="fa fa-eye"></i>
+                                                    <i class="fa fa-edit"></i>
                                                 </a>
-                                                <a asp-action="Details" asp-route-id="@item.Id" type="button" class="btn btn-danger">
+                                                <a asp-action="Delete" asp-route-id="@item.Id" type="button" class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
-                                                <a asp-action="Delete" asp-route-id="@item.Id" type="button" class="btn btn-warning">
-                                                    <i class="fa fa-edit"></i>
+                                                <a asp-action="Details" asp-route-id="@item.Id" type="button" class="btn btn-warning">
+                                                    <i class="fa fa-eye"></i>
                                                 </a>
                                             </div>
                                         </td>
@@ -157,7 +141,7 @@
 
                             </tbody>
                             <tfoot>
-                                <tr class="d-none">
+                                @*<tr class="d-none">
                                     <th>Name</th>
                                     <th>Name</th>
                                     <th>Name</th>
@@ -166,9 +150,8 @@
                                     <th>Name</th>
                                     <th>Name</th>
                                     <th>Name</th>
-                                    <th>Name</th>
-                                    <th>Name</th>
-                                </tr>
+                                    
+                                </tr>*@
                             </tfoot>
                         </table>
                     </div>

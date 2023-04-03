@@ -20,6 +20,30 @@
   "edit": "Edit",
   "delete": "Delete",
   "back": "Back To List ",
+  //Categories
+  "image": "Image",
+  "categories": "Categories",
+  "search": "Search",
+  "nofilechosen": "NoFileChosen",
+  "save": "Save",
+
+  // Products
+  "product": "Products",
+  "no": "No.",
+  "name": "Name",
+  "discount": "Discount",
+  "description": "Description",
+  "quantity": "Quantity",
+  "price": "UnitPrice",
+  "operation": "Operations",
+  "brand": "Brand",
+  "searchprd": "Filter with Product",
+  "searchbrand": "Filter with Brand",
+  "searchcat": "Flter with Category",
+  "feature": "Is Feature",
+  "date": "Date",
+  "category": "Category",
+  "msgdelete": "Are you sure you want to delete this?",
   //Brands
   "Type your keywords here": "Type your keywords here",
   "No.": "No.",
@@ -35,12 +59,11 @@
   "Personal Data": "Personal Data",
   "Your account contains personal data that you have given us. This page allows you to download or delete that data.": "Your account contains personal data that you have given us. This page allows you to download or delete that data.",
   "Deleting this data will permanently remove your account, and this cannot be recovered.": "Deleting this data will permanently remove your account, and this cannot be recovered.",
-  "Download": "Download"
+  "Download": "Download",
   //profile
   "username": "Username",
   "profile": "Profile",
   "phonenumber": "Phonenumber",
-  "save": "Save",
 
   //Email//
   "manageemail": "Manage Email",
@@ -56,6 +79,11 @@
   "Full Name": "Full Name",
   "Email": "Email",
   "Delete User": "Delete User",
-  "User Details": "User Details"
+  "User Details": "User Details",
+  "changeemail": "Change Email",
+ //Footer
+  "footercopy": "Copyright © 2023-2024",
+  "footerteam": " ITI Team Full Stack .Net Developer.",
+  "footerreserve": "All rights reserved."
 
 }
