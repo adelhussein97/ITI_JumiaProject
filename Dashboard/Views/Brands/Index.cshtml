@@ -35,18 +35,20 @@
                             <div class="col-sm-4">
                                 <h3 class="card-title"></h3>
                             </div>
-                            <div class="row col-sm-8 d-flex flex-row justify-content-end">
-                                <button type="submit" class="col-1 btn btn-lg btn-default">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                                <form asp-action="Index">
-                                    <input type="search" name="Filter" onchange="document.getElementById('btnSubmit').click();" class="col-8 form-control form-control-lg" placeholder="@localizer["Type your keywords here"]" value="">
-                                    <input id="btnSubmit" hidden type="submit" value="submit" />
-                                </form>
-                                @*<input type="search" class="col-8 form-control form-control-lg" placeholder="Type your keywords here" value="">*@
+                           
 
-                                <a class="col-2 btn btn-primary" style="margin-left: 0.5em;" asp-action="Create">@localizer["create"]</a>
-                                
+                            <div class="row col-sm-8 ">
+                                <form asp-action="Index">
+                                    <div class="d-inline-flex">
+                                        <button type="submit" class="col-2 btn btn-lg btn-default">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                        <input type="search" name="Filter" onchange="document.getElementById('btnSubmit').click();" class=" form-control form-control-lg col-lg-8" placeholder="@localizer["search"]">
+
+                                        <a class="col-2 mx-2 btn btn-primary d-flex" href="/Brands/Create">@localizer["create"]</a>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -83,15 +85,17 @@
                                        
 
                                         <td class="col-2">
-                                            <div class="btn-group">
-                                                <a asp-action="Edit" asp-route-id="@item.Id" type="button" title="@localizer["edit"]" class="btn btn-info">
-                                                    <i class="fa fa-eye"></i>
+                                            <div class="btn-group d-flex justify-content-center">
+
+                                                <a asp-action="Edit" asp-route-id="@item.Id" type="button" class="btn btn-warning">
+
+                                                    <i class="fa fa-edit"></i>
                                                 </a>
-                                                <a asp-action="Delete" asp-route-id="@item.Id" type="button" title="@localizer["delete"]" class="btn btn-danger">
+                                                <a asp-action="Delete" asp-route-id="@item.Id" type="button" class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
-                                                <a asp-action="Details" asp-route-id="@item.Id" type="button" title="@localizer["details"]" class="btn btn-warning">
-                                                    <i class="fa fa-edit"></i>
+                                                <a asp-action="Details" asp-route-id="@item.Id" type="button" class="btn btn-info">
+                                                    <i class="fa fa-eye"></i>
                                                 </a>
                                             </div>
                                         </td>

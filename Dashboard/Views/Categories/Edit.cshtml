@@ -32,22 +32,25 @@
             </div>
             <div class="form-group">
                 <label asp-for="Image" class="control-label">@localizer["image"]</label>
-                <input asp-for="Image" class="form-control" />
+                <input name="imgFile" class="form-control" />
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label">@localizer["description"]</label>
                 <input asp-for="Description" class="form-control" />
             </div>
+ 
             <div class="form-group">
-                <input type="submit" value="@localizer["save"]" class="btn btn-primary" />
-                <button class="btn btn-warning "> <a asp-action="Index"><strong class="text-dark">@localizer["back"]</strong></a></button>
-
-            </div>
+                                <input type="submit" value=@localizer["edit"] class="btn btn-info" />
+                            </div>
+                            <div class="form-group ">
+                                <a class="btn btn-warning" asp-action="Index">@localizer["back"]</a>
+                            </div>
+        
         </form>
     </div>
 </div>
 
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

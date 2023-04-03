@@ -124,14 +124,16 @@
                                         </td>
                                        
                                         <td class="col-2">
-                                            <div class="btn-group">
-                                                <a asp-action="Edit" asp-route-id="@item.Id" type="button" class="btn btn-info">
+                                            <div class="btn-group d-flex justify-content-center">
+
+                                                <a asp-action="Edit" asp-route-id="@item.Id" type="button" class="btn btn-warning">
+
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                                 <a asp-action="Delete" asp-route-id="@item.Id" type="button" class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
-                                                <a asp-action="Details" asp-route-id="@item.Id" type="button" class="btn btn-warning">
+                                                <a asp-action="Details" asp-route-id="@item.Id" type="button" class="btn btn-info">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             </div>

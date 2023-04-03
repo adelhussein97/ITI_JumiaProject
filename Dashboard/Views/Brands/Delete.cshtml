@@ -11,7 +11,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>@localizer["delete"]</h1>
+                
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -31,18 +31,17 @@
     
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @localizer["name"]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-            <input type="submit" value="@localizer["delete"]" class="btn btn-danger" /> |
-            <a asp-action="Index" class="btn btn-warning">@localizer["Back to List"]</a>
-    </form>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value=@localizer["delete"] class="btn btn-danger" />
+            <a asp-action="Index" class="btn btn-warning">@localizer["back"] </a>
+        </form>
 </div>
 </div>
 

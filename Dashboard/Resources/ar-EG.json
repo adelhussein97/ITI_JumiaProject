@@ -1,5 +1,5 @@
 {
-// Main Keywords
+  // Main Keywords
   "hello": "مرحبا",
   "login": "تسجيل الدخول",
   "register": "انشاء حساب",
@@ -26,6 +26,8 @@
   "search": "ادخل اسم الصنف هنا",
   "nofilechosen": "لا يوجد اختيار",
   "save": "حفظ",
+  "deletecategory": "هل انت متاكد من حذف هذا الصنف ؟",
+
   //Products
   "product": "المنتجات",
   "no": "م",
@@ -68,6 +70,7 @@
   "Email": "البريد الإلكترونى",
   "Delete User": "حذف مستخدم",
   "User Details": "تفاصيل المستخدم",
+
   //profile
   "username": "اسم المستخدم",
   "profile": "حسابي",
@@ -81,6 +84,18 @@
   //Footer
   "footercopy": "حقوق النشر © 2023-2024",
   "footerteam": "فريق وزراة الاتصالات ITI ",
-  "footerreserve": "جميع الحقوق محفوظ"
- 
+  "footerreserve": "جميع الحقوق محفوظ",
+  //Dashboard Side Left
+  "searchincategory": "بحث",
+  "users": "المستخدمين",
+  "forms": "الانماط",
+  "tables": "الجداول",
+  "new": "جديد",
+  "dashboard": "اللوحة الاساسية",
+  "controlpanel": "لوحة التحكم",
+  //home
+  "newmember": "الاعضاء الجدد",
+  "sales": "المبيعات",
+  "likes": "الاعجابات",
+  "cputraffic": "حركة وحدة المعالجة المركزية"
 }

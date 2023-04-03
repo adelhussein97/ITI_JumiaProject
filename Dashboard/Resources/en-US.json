@@ -1,5 +1,5 @@
 {
-// Main Keywords
+  // Main Keywords
   "hello": "Hello",
   "login": "LogIn",
   "register": "Register",
@@ -26,6 +26,7 @@
   "search": "Search",
   "nofilechosen": "NoFileChosen",
   "save": "Save",
+  "deletecategory": "You Are Sure to Delete This Category",
 
   // Products
   "product": "Products",
@@ -69,8 +70,8 @@
   "manageemail": "Manage Email",
   "sendverificationemail": "Send Verification Email",
   "newemail": "New Email",
-  "changeemail": "Change Email"
-  "Download": "Download",
+  "changeemail": "Change Email",
+
   "Delete Personal Data": "Delete Personal Data",
   "Delete data and close my account": "Delete data and close my account",
 
@@ -80,10 +81,25 @@
   "Email": "Email",
   "Delete User": "Delete User",
   "User Details": "User Details",
-  "changeemail": "Change Email",
- //Footer
+
+  //Footer
   "footercopy": "Copyright © 2023-2024",
   "footerteam": " ITI Team Full Stack .Net Developer.",
-  "footerreserve": "All rights reserved."
+  "footerreserve": "All rights reserved.",
+  //Dashboard Side Left
+  "searchincategory": "Search",
+  "users": "Users",
+  "forms": "Forms",
+  "tables": "Tables",
+  "new": "New",
+  "dashboard": "Dashboard",
+  "controlpanel": "Jumia Cpanel",
+  //home
+  "newmember": "New Member",
+  "sales": "Sales",
+  "likes": "Likes",
+  "cputraffic": "CPU Traffic"
+
+
 
 }

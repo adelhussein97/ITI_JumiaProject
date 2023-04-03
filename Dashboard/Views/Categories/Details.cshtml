@@ -46,12 +46,9 @@
         </dl>
    
     <div class="form-group">
-        <button class="btn btn-primary ">
-            <a asp-action="Edit" asp-route-id="@Model?.Id"><strong class="text-light">@localizer["edit"]</strong></a>
-
-        </button>
-        <button class="btn btn-warning ">
-            <a asp-action="Index"><strong class="text-dark">@localizer["back"]</strong></a>
-        </button>
+       <div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-info" >@localizer["edit"]</a> 
+    <a asp-action="Index" class="btn btn-warning">@localizer["back"]</a>
+</div>
     </div>
 

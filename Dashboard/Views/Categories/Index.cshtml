@@ -32,15 +32,18 @@
                             <div class="col-sm-4">
                                 <h3 class="card-title"></h3>
                             </div>
-                            <div class="row col-sm-8 d-flex flex-row justify-content-end">
-                                <button type="submit" class="col-1 btn btn-lg btn-default">
+                            <div class="row col-sm-8 ">
+                                <form asp-action="Index">
+                                    <div class="d-inline-flex">
+                                <button type="submit" class="col-2 btn btn-lg btn-default">
                                     <i class="fa fa-search"></i>
                                 </button>
-                                <form asp-action="Index">
-                                    <input type="search" type="text" name="Filter" onchange="document.getElementById('btnSubmit').click();" class="col-8 form-control form-control-lg" placeholder="@localizer["search"]" value="">
-                                    <input id="btnSubmit" hidden type="submit" value="submit" />
+                                    <input type="search" name="Filter" onchange="document.getElementById('btnSubmit').click();" class=" form-control form-control-lg col-lg-8" placeholder="@localizer["search"]">
+
+                                    <a class="col-2 mx-2 btn btn-primary d-flex" href="/Categories/Create">@localizer["create"]</a>
+                                    </div>
                                 </form>
-                                <a class="col-2 btn btn-primary" style="margin-left: 0.5em;" href="/Categories/Create">@localizer["create"]</a>
+
                             </div>
                         </div>
                     </div>

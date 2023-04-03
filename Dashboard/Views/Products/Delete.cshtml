@@ -10,7 +10,6 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-        <h3>@localizer["msgdelete"]</h3>
     <div class="container-fluid">
         <div class="row mb-2 ">
             <ol class="breadcrumb">
@@ -20,46 +19,52 @@
             </ol>
         </div>
     </div><!-- /.container-fluid -->
+
 </section>
 <section class="content">
     <div class="container-fluid">
 
         <div>
+            <h3>@localizer["msgdelete"]</h3>
+
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @localizer["name"]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DiscountPercent)
+                    @localizer["discount"]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DiscountPercent)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Discription)
+                    @localizer["description"]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Discription)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsFeatured)
-        </dt>
+                    @localizer["feature"]
+
+                </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.IsFeatured)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
+                    @localizer["quantity"]
+
+                </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Quantity)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UnitPrice)
-        </dt>
+                    @localizer["price"]
+
+                </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.UnitPrice)
         </dd>
@@ -67,7 +72,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value=@localizer["delete"] class="btn btn-danger" /> |
+        <input type="submit" value=@localizer["delete"] class="btn btn-danger" /> 
         <a asp-action="Index" class="btn btn-warning">@localizer["back"] </a>
     </form>
 </div>
