@@ -1,5 +1,8 @@
-﻿@model ApplicationUser
-<h1>User Details</h1>
+﻿@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer localizer
+@model ApplicationUser
+<h1>@localizer["User Details"]</h1>
 <div>
     <hr />
    <div class="row">
@@ -35,15 +38,15 @@
                 <thead>
                     <tr>
                      
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Email</th>
+                        <th scope="col">@localizer["Full Name"]</th>
+                        
+                        <th scope="col">@localizer["Email"]</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">@Model.FirstName</th>
-                        <td scope="row">@Model.LastName</td>
+                        <th scope="row">@Model.FirstName @Model.LastName</th>
+                        
                         <td scope="row">@Model.Email</td>
 
                     </tr>
@@ -65,5 +68,5 @@
     </div>
 </div>
 <div> 
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-warning">@localizer["Back to List"]</a>
 </div>

@@ -69,6 +69,17 @@
   "manageemail": "Manage Email",
   "sendverificationemail": "Send Verification Email",
   "newemail": "New Email",
+  "changeemail": "Change Email"
+  "Download": "Download",
+  "Delete Personal Data": "Delete Personal Data",
+  "Delete data and close my account": "Delete data and close my account",
+
+  //Users
+  "User Name": "User Name",
+  "Full Name": "Full Name",
+  "Email": "Email",
+  "Delete User": "Delete User",
+  "User Details": "User Details",
   "changeemail": "Change Email",
  //Footer
   "footercopy": "Copyright © 2023-2024",

@@ -1,8 +1,125 @@
-﻿@model IEnumerable<UserDTO>;
+﻿@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer localizer
+
+@model IEnumerable<UserDTO>;
 @{
     ViewData["title"] = "users";
 }
-<div class="gap-5 justify-content-center ">
+
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    @*<div class="card-header">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h3 class="card-title"></h3>
+                            </div>
+                            <div class="row col-sm-8 d-flex flex-row justify-content-end">
+                                <button type="submit" class="col-1 btn btn-lg btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                                <form asp-action="Index">
+                                    <input type="search" name="Filter" onchange="document.getElementById('btnSubmit').click();" class="col-8 form-control form-control-lg" placeholder="@localizer["Type your keywords here"]" value="">
+                                    <input id="btnSubmit" hidden type="submit" value="submit" />
+                                </form>
+                               
+
+                                <a class="col-2 btn btn-primary" style="margin-left: 0.5em;" asp-action="Create">@localizer["create"]</a>
+
+                            </div>
+                        </div>
+                    </div>*@
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-striped dataTable dtr-inline">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @localizer["No."]
+                                    </th>
+                                    <th>
+                                        @localizer["User Name"]
+                                    </th>
+                                    <th>
+                                        @localizer["Full Name"]
+                                    </th>
+                                    <th>
+                                        @localizer["Email"]
+                                    </th>
+
+                                    <th class="col-2">
+                                        @localizer["Operation"]
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int rowNo = 0;
+                                }
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @(rowNo += 1)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+
+
+                                        <td class="col-2">
+                                            <div class="btn-group">
+                                                @*<a asp-action="Edit" asp-route-id="@item.Id" type="button" title="@localizer["edit"]" class="btn btn-info">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>*@
+                                                <a asp-action="Delete" asp-route-id="@item.Id" type="button" title="@localizer["delete"]" class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                                <a asp-action="Details" asp-route-id="@item.Id" type="button" title="@localizer["details"]" class="btn btn-warning">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr class="d-none">
+                                    <th>Name</th>
+                                    <th>Name</th>
+
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+
+
+
+
+@*<div class="gap-5 justify-content-center ">
     @foreach (var item in Model)
     {
         <div style="background-color:#aaaa" class="  mb-3   card-body text-center d-flex justify-content-between">
@@ -18,4 +135,4 @@
         </div>
         <p>@ViewData["admin"]</p>
     }
-</div>
+</div>*@

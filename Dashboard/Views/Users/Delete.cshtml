@@ -1,34 +1,40 @@
-﻿@model ApplicationUser
+﻿@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer localizer
+@model ApplicationUser
 
-<div class="d-flex gap-3">
-    <h1>Delete</h1>
-    <h1>User</h1>
-</div>
 
-<h3>Are you sure you want to delete this?</h3>
+<h1>@localizer["Delete User"]</h1>
+    
+
+
+<h3>@localizer["Are you sure you want to delete this?"]</h3>
 <div>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UserName)
+            @localizer["User Name"]
+            @*@Html.DisplayNameFor(model => model.UserName)*@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.UserName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
+            @localizer["Full Name"]
+            @*@Html.DisplayNameFor(model => model.FirstName)*@
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)
         </dd>
-        <dt class = "col-sm-2">
+        @*<dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.LastName)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.LastName)
-        </dd>
+        </dd>*@
             <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
+            @localizer["Email"]
+            @*@Html.DisplayNameFor(model => model.Email)*@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Email)
@@ -37,7 +43,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" href="Index" class="btn btn-danger" /> 
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value=@localizer["delete"] href="Index" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-warning">@localizer["Back to List"]</a>
     </form>
 </div>
