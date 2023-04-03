@@ -25,6 +25,8 @@ namespace WebApplication1.Models
 
         public Brand? Brand { get; set; }
 
+       
+
         public IEnumerable<PrdImage>? PrdImages { get; set; }
 
         public IEnumerable<Review>? ReviewId { get; set; }

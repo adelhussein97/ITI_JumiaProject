@@ -30,4 +30,8 @@
     <Folder Include="wwwroot\img\upload\" />
   </ItemGroup>
 
+<PropertyGroup>
+  <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+</PropertyGroup>
+
 </Project>
