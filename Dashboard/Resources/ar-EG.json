@@ -64,13 +64,13 @@
   "Delete Personal Data": "حذف البيانات الشخصية",
   "Delete data and close my account": "حذف البيانات و غلق حسابى",
 
+
   //Users
   "User Name": "اسم المستخدم",
   "Full Name": "الاسم كامل",
   "Email": "البريد الإلكترونى",
   "Delete User": "حذف مستخدم",
   "User Details": "تفاصيل المستخدم",
-
   //profile
   "username": "اسم المستخدم",
   "profile": "حسابي",
@@ -97,5 +97,10 @@
   "newmember": "الاعضاء الجدد",
   "sales": "المبيعات",
   "likes": "الاعجابات",
-  "cputraffic": "حركة وحدة المعالجة المركزية"
+  "cputraffic": "حركة وحدة المعالجة المركزية",
+  "user": "مستخدم",
+  "brandhome": "ماركة",
+  "producthome": "منتج",
+  "categoryhome": "صنف"
+
 }

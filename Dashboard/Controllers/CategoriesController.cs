@@ -19,19 +19,29 @@ namespace WebApplication1.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public CategoriesController(ApplicationDbContext context,IWebHostEnvironment hostEnvironment)
+        public CategoriesController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
             _hostEnvironment = hostEnvironment;
         }
+        //public IActionResult category()
+        //{
+        //    bager();
+        //    return View();
+        //}
+       
 
         // GET: Categories
         public async Task<IActionResult> Index(string? Filter = null)
         {//test
-            var task= _context.categories
+            var task = _context.categories
                     .Where(c => Filter == null || c.Name.ToLower().Contains(Filter.ToLower()));
+
+         
+
             return View(await task.ToListAsync());
         }
+
 
         // GET: Categories/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -68,7 +78,7 @@ namespace WebApplication1.Controllers
             {
                 var saveImage = Path.Combine(_hostEnvironment.WebRootPath, "CatImages", imgfile.FileName);
                 string imageExtension = Path.GetExtension(imgfile.FileName);
-                if (imageExtension == ".jpg" || imageExtension == ".png" || imageExtension == ".tiff" || imageExtension == ".jpeg"  || imageExtension == ".gif")
+                if (imageExtension == ".jpg" || imageExtension == ".png" || imageExtension == ".tiff" || imageExtension == ".jpeg" || imageExtension == ".gif")
                 {
 
 
@@ -96,12 +106,12 @@ namespace WebApplication1.Controllers
 
                 }
             }
-                return RedirectToAction(nameof(Index));
-              
-           
-           
+            return RedirectToAction(nameof(Index));
+
+
+
         }
-            
+
         // GET: Categories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -194,5 +204,7 @@ namespace WebApplication1.Controllers
         {
             return (_context.categories?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+       
     }
 }

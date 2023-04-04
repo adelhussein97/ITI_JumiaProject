@@ -98,7 +98,12 @@
   "newmember": "New Member",
   "sales": "Sales",
   "likes": "Likes",
-  "cputraffic": "CPU Traffic"
+  "cputraffic": "CPU Traffic",
+  "user": "User",
+  "brandhome": "Brand",
+  "producthome": "Product",
+  "categoryhome": "Category"
+
 
 
 
