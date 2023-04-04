@@ -77,11 +77,11 @@ namespace ITI_Jumiaaa.API.Controllers
             user.FirstName = request.FirstName;
             user.LastName = request.LastName;
            // user.ProfilePicture = request.ProfilePicture;
-            user.City = request.City;
-            user.FullAddress = request.FullAddress;
-            user.GenderId = request.GenderId;
-            user.GovernorateId = request.GovernorateId;
-            user.PhoneNumber = request.PhoneNumber;
+            //user.City = request.City;
+            //user.FullAddress = request.FullAddress;
+            //user.GenderId = request.GenderId;
+            //user.GovernorateId = request.GovernorateId;
+            //user.PhoneNumber = request.PhoneNumber;
             user.Email = request.Email;
 
             var result = await userManager.CreateAsync(user, request.Password);

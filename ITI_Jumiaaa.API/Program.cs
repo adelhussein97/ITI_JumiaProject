@@ -30,6 +30,9 @@ builder.Services.AddSwaggerGen();
 // Map Authentication Service 
 builder.Services.AddScoped<IAuthService,AuthService>();
 
+// Add Endpoint of Fetch Data
+builder.Services.AddCors();
+
 // Add Authentication Schema Bearer
 builder.Services.AddAuthentication(options=>
 {
@@ -54,7 +57,10 @@ builder.Services.AddAuthentication(options=>
     };
 });
 
+// 
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -64,6 +70,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+// Allow To Use for External Access 
+app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
 app.UseAuthentication();
 app.UseAuthorization();
