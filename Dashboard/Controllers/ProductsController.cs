@@ -43,6 +43,24 @@ namespace WebApplication1.Controllers
             
         }
 
+        [HttpGet("FilterAll")]
+        public async Task<IActionResult> FilterAll(string? Filter = null)
+        {
+            var task = _context.products
+                    .Where(c => Filter == null || c.Name.ToLower().Contains(Filter.ToLower()));
+            //        .Where(c => Filter == null || (c.Category.Name == Filter))
+
+            //        .Where(c => Filter == null || (c.Brand.Name == Filter))
+
+            //        .Include(p => p.Brand).Include(t => t.Category);
+
+            //ViewData["BrandId"] = new SelectList(_context.brands, "Id", "Name");
+            //ViewData["CategoryId"] = new SelectList(_context.categories, "Id", "Name");
+
+            return View(await task.ToListAsync());
+
+        }
+
         // GET: Products/Details/5
         public async Task<IActionResult> Details(long? id)
         {
