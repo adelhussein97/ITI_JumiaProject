@@ -101,6 +101,8 @@
   "user": "مستخدم",
   "brandhome": "ماركة",
   "producthome": "منتج",
-  "categoryhome": "صنف"
+  "categoryhome": "صنف",
+  //_ManageNav
+  "tofactorauthentication": "توثيق ذو عاملين"
 
 }
