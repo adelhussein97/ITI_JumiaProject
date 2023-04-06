@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Domains.FirebaseCloudApi;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
-using WebApplication1.Models;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace WebApplication1.Controllers
 {
@@ -17,18 +15,16 @@ namespace WebApplication1.Controllers
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly IHostingEnvironment _WebHost;
+        private readonly FirebaseAPI firebase;
 
-        public CategoriesController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
+        public CategoriesController(ApplicationDbContext context, IHostingEnvironment hostEnvironment)
         {
             _context = context;
-            _hostEnvironment = hostEnvironment;
+            _WebHost = hostEnvironment;
+            firebase = new FirebaseAPI(hostEnvironment);
         }
-        //public IActionResult category()
-        //{
-        //    bager();
-        //    return View();
-        //}
+        
        
 
         // GET: Categories
@@ -76,35 +72,18 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var saveImage = Path.Combine(_hostEnvironment.WebRootPath, "CatImages", imgfile.FileName);
-                string imageExtension = Path.GetExtension(imgfile.FileName);
-                if (imageExtension == ".jpg" || imageExtension == ".png" || imageExtension == ".tiff" || imageExtension == ".jpeg" || imageExtension == ".gif")
-                {
-
-
-                    #region Create New Object of Prd Images
-
-                    category.Image = "./CatImages/" + imgfile.FileName;
-                    #endregion
-
-                    #region Upload Image on Server Root and Save URL in DBs
-                    using (var uploadimg = new FileStream(saveImage, FileMode.Create))
+                #region Upload Image on Server Root and Save URL in DBs
+                    
+                    if(imgfile!=null)
                     {
-                        await imgfile.CopyToAsync(uploadimg);
-
-                        ViewData["message"] = "The Selected File " + imgfile.FileName + " is Uploaded Successfully";
+                        var ImageURL = await firebase.UploadFileonFirebase(imgfile, "CatImages");
+                        if (ImageURL.ToString().Contains("https"))
+                            category.Image =ImageURL;
                     }
-                    #endregion
-
-
                     _context.Add(category);
                     await _context.SaveChangesAsync();
-                }
-                else
-                {
-                    ViewData["message"] = "The Selected File " + imgfile.FileName + " not match .jpg | .png | .tiff | .gif";
-
-                }
+                   
+                #endregion
             }
             return RedirectToAction(nameof(Index));
 
