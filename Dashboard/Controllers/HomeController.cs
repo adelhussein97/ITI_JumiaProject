@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using System.Data;
@@ -41,7 +42,8 @@ namespace WebApplication1.Controllers
             ViewBag.User = context.Users.Count();
             return View();
         }
-       
+     
+
         [HttpPost]
         [AllowAnonymous]
         public IActionResult setLanguge(string languge, string ReturnUrl)

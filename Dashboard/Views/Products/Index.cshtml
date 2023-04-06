@@ -13,10 +13,10 @@
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2 ">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item @(isrtl ? "text-start" : "text-end")"><a asp-controller="Home" asp-action="Index">@localizer["home"]</a></li>
-                    <li class="breadcrumb-item active @(isrtl ? "text-start" : "text-end")">@localizer["product"]</li>
-                </ol>   
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item @(isrtl ? "text-start" : "text-end")"><a asp-controller="Home" asp-action="Index">@localizer["home"]</a></li>
+                <li class="breadcrumb-item active @(isrtl ? "text-start" : "text-end")">@localizer["product"]</li>
+            </ol>
         </div>
     </div><!-- /.container-fluid -->
 </section>
@@ -24,31 +24,40 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-2">
-               
             </div>
             <div class="col-sm-10">
-                    <form asp-action="Index">
-                <ol class="breadcrumb float-sm-right">
-                       <li> <button type="submit" id="btnSubmit" class="btn btn-lg btn-default">
-                            <i class="fa fa-search"></i>
-                        </button></li>
-                    <li><input type="search" name="Filter" onchange="document.getElementById('btnSubmit').click();" class="form-control form-control-lg" placeholder=@localizer["searchprd"] value=""></li>
+                <form asp-action="Index">
+                    <ol class="breadcrumb float-sm-right">
+
                         <li>
+                            <button type="submit" id="btnSubmit" class="btn btn-lg btn-default">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </li>
+
+                        <li>
+                            <input type="search" name="Filter"
+                                   onchange="document.getElementById('btnSubmit').click();"
+                                   class="form-control form-control-lg"
+                                   placeholder=@localizer["searchprd"] value="">
+                        </li>
+                        <li>
+
                             <select name="FilterBrand" onchange="document.getElementById('btnSubmit').click();" class="form-control form-control-lg" asp-items="ViewBag.BrandId">
                                 <option selected disabled value="">@localizer["searchbrand"]</option>
 
-                        </select>
-                    </li>
+                            </select>
+                        </li>
                         <li>
                             <select name="FilterCategory" onchange="document.getElementById('btnSubmit').click();" class="form-control form-control-lg" asp-items="ViewBag.CategoryId">
                                 <option selected disabled value="">@localizer["searchcat"]</option>
-                        </select>
-                    </li>
+                            </select>
+                        </li>
 
 
                         <a class="btn btn-primary" style="margin-left: 0.5em;" href="/Products/Create">@localizer["create"]</a>
-                </ol>
-                    </form>
+                    </ol>
+                </form>
             </div>
 
         </div>
@@ -60,7 +69,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    
+
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="example2" class="table text-center table-bordered table-striped dataTable dtr-inline">
@@ -111,18 +120,18 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Discription)
                                         </td>
-                                       
+
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Quantity)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.UnitPrice)
                                         </td>
-                                       
+
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Brand.Name)
                                         </td>
-                                       
+
                                         <td class="col-2">
                                             <div class="btn-group d-flex justify-content-center">
 
@@ -144,15 +153,15 @@
                             </tbody>
                             <tfoot>
                                 @*<tr class="d-none">
-                                    <th>Name</th>
-                                    <th>Name</th>
-                                    <th>Name</th>
-                                    <th>Name</th>
-                                    <th>Name</th>
-                                    <th>Name</th>
-                                    <th>Name</th>
-                                    <th>Name</th>
-                                    
+                                <th>Name</th>
+                                <th>Name</th>
+                                <th>Name</th>
+                                <th>Name</th>
+                                <th>Name</th>
+                                <th>Name</th>
+                                <th>Name</th>
+                                <th>Name</th>
+
                                 </tr>*@
                             </tfoot>
                         </table>

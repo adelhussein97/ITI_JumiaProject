@@ -28,10 +28,13 @@
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box">
-                        @*<span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>*@
+                        <span class="info-box-icon bg-primary  elevation-1">
+                            <i class="nav-icon fas fa-copy"></i>
+
+                        </span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text"><h2>@localizer["categories"]</h2></span>
+                            <span class="info-box-text"><h4>@localizer["categories"]</h4></span>
                             <span class="info-box-number">
                                 <label style="font-size:larger;color:red;">@ViewBag.Count</label>
                                 <small>@localizer["categoryhome"]</small>
@@ -44,10 +47,11 @@
                 <!-- /.col -->
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box mb-3">
-                        @*<span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>*@
-
+                        <span class="info-box-icon bg-info elevation-1">
+                            <i class="nav-icon fas fa-th"></i>
+                        </span>
                         <div class="info-box-content">
-                            <span class="info-box-text"><h2>@localizer["product"]</h2></span>
+                            <span class="info-box-text"><h4>@localizer["product"]</h4></span>
                             <span class="info-box-number">
                                 <label style="font-size:larger;color:red;">@ViewBag.Product</label>
                                 <small>@localizer["producthome"]</small>
@@ -63,9 +67,9 @@
 
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box mb-3">
-                        @*<span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>*@
+                        <span class="info-box-icon bg-success elevation-1"><i class="nav-icon fas fa-chart-pie"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text"><h2>@localizer["brand"]</h2></span>
+                            <span class="info-box-text"><h4>@localizer["brand"]</h4></span>
                             <span class="info-box-number">
                                 <label style="font-size:larger;color:red;">@ViewBag.Brand</label>
                                 <small>@localizer["brandhome"]</small>
@@ -81,7 +85,7 @@
                         <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text"><h2>@localizer["newmember"]</h2></span>
+                            <span class="info-box-text"><h4>@localizer["newmember"]</h4></span>
                             <span class="info-box-number">
                                 <label style="font-size:larger;color:red;">@ViewBag.User</label>
                                 <small>@localizer["user"]</small>
@@ -313,6 +317,7 @@
                                                 <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
                                             </div>
                                             <!-- /.direct-chat-infos -->
+                                            <img class="direct-chat-img" src="~/img/user1-128x128.jpg" alt="message user image">
                                             <img class="direct-chat-img" src="~/img/user1-128x128.jpg" alt="message user image">
                                             <!-- /.direct-chat-img -->
                                             <div class="direct-chat-text">

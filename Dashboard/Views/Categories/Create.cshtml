@@ -39,8 +39,11 @@
                 <input asp-for="Description" class="form-control" />
             </div>
             <div class="form-group">
+                    <div class="form-group ">
                     <input type="submit" value=@localizer["create"] class="btn btn-primary w-25" />
-                    <button class="btn btn-warning "> <a asp-action="Index"><strong class="text-dark">@localizer["back"]</strong></a></button>
+                                </div>
+                 <div class="form-group ">
+                                    <a class="btn btn-warning" asp-action="Index">@localizer["back"]</a>
             </div>
         </form>
     </div>

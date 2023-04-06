@@ -102,7 +102,12 @@
   "user": "User",
   "brandhome": "Brand",
   "producthome": "Product",
-  "categoryhome": "Category"
+  "categoryhome": "Category",
+  //_ManageNav
+  "tofactorauthentication": "Tow-Factor Authentication"
+
+
+
 
 
 
