@@ -29,6 +29,8 @@ namespace WebApplication1.Controllers
         public IActionResult Index()
         {
             ViewBag.name = _stringLocalizer["welcome"];
+
+
             ViewBag.Details = context.categories.ToList();
             ViewBag.Count = context.categories.Count();
 
@@ -40,6 +42,7 @@ namespace WebApplication1.Controllers
 
             ViewBag.Details = context.Users.ToList();
             ViewBag.User = context.Users.Count();
+
             return View();
         }
      

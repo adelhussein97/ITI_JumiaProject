@@ -103,6 +103,20 @@
   "producthome": "منتج",
   "categoryhome": "صنف",
   //_ManageNav
-  "tofactorauthentication": "توثيق ذو عاملين"
+  "tofactorauthentication": "المصادقة الثنائية",
+  "addauthenticationapp": "اضافة برنامج موثق",
+  "You have no recovery codes left.": "ليس لديك رموز استرداد متبقية.",
+  "before you can log in with a recovery code.": "قبل أن تتمكن من تسجيل الدخول باستخدام رمز الاسترداد.",
+  "You have 1 recovery code left.": "يتبقى لديك رمز استرداد واحد.",
+  "generate a new set of recovery codes": "إنشاء مجموعة جديدة من رموز الاسترداد",
+  "Forget this browser": "ننسي هذا المتصفح",
+  "Reset recovery codes": "إعادة تعيين رموز الاسترداد",
+  "Set up authenticator app": "قم بإعداد تطبيق المصادقة",
+  "Reset authenticator app": "إعادة تعيين تطبيق المصادقة",
+  "Privacy and cookie policy have not been accepted.": "لم يتم قبول سياسة الخصوصية وملفات تعريف الارتباط.",
+  "You must accept the policy before you can enable two factor authentication.": "يجب عليك قبول السياسة قبل أن تتمكن من تمكين المصادقة الثنائية.",
+  "Two-factor authentication (2FA)": "تشغيل المصادقة الثناية",
+  "Authenticator app": "المصادقة",
+  "buys": "المبيعات"
 
 }
