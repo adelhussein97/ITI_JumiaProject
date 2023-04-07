@@ -1,28 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Dashboard.MVC.ModelsDTO;
+using Domains.FirebaseCloudApi;
+using Firebase.Auth;
+using Firebase.Storage;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Models;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace WebApplication1.Controllers
 {
+
     [Authorize(Roles = "Admin")]
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _WebHost;
-
-        public ProductsController(ApplicationDbContext context, IWebHostEnvironment WebHost)
+        private readonly IHostingEnvironment _WebHost;
+        private readonly FirebaseAPI firebase;
+        
+        public ProductsController(ApplicationDbContext context, IHostingEnvironment WebHost)
         {
             _context = context;
             this._WebHost = WebHost;
+            this.firebase = new FirebaseAPI(_WebHost);
         }
 
         // GET: Products
@@ -72,6 +78,7 @@ namespace WebApplication1.Controllers
             var product = await _context.products
                 .Include(p => p.Brand)
                 .Include(p => p.Category)
+                .Include(p=>p.PrdImages)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
@@ -88,6 +95,9 @@ namespace WebApplication1.Controllers
             ViewData["CategoryId"] = new SelectList(_context.categories, "Id", "Name");
             return View();
         }
+
+       
+
 
         // POST: Products/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -107,15 +117,19 @@ namespace WebApplication1.Controllers
                 {
                     foreach (var item in imgfile)
                     {
+                        
                         #region Check Image File Name
-                        var imageFileName = UploadImage(item);
-                        var prdImage = new PrdImage()
+                        var ImageURL = await firebase.UploadFileonFirebase(item,"PrdImages");
+                        if (ImageURL.ToString().Contains("https"))
                         {
-                            Product = product,
-                            Url = "./PrdImages/" + imageFileName
-                        };
-                        _context.prdImages.Add(prdImage);
-                        await _context.SaveChangesAsync();
+                            var prdImage = new PrdImage()
+                            {
+                                Product = product,
+                                Url = ImageURL
+                            };
+                            _context.prdImages.Add(prdImage);
+                            await _context.SaveChangesAsync();
+                        }
                         #endregion
                     }
                 }
@@ -226,7 +240,7 @@ namespace WebApplication1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,Name,DiscountPercent,Discription,IsFeatured,Quantity,UnitPrice,InsertingDate,BrandId,CategoryId")] Product product)
+        public async Task<IActionResult> Edit(List<IFormFile> imgfile,long id, [Bind("Id,Name,DiscountPercent,Discription,IsFeatured,Quantity,UnitPrice,InsertingDate,BrandId,CategoryId")] Product product)
         {
             if (id != product.Id)
             {
@@ -237,6 +251,36 @@ namespace WebApplication1.Controllers
             {
                 try
                 {
+                    // Upload Image on Server
+                         var prdImages = _context.prdImages.Where(p=>p.ProductId==id).ToList();
+                         if (prdImages != null)
+                         {
+                            foreach (var item in prdImages)
+                            {
+                                    _context.prdImages.Remove(item);
+                            }
+                         }
+                            
+                    if (imgfile != null)
+                    {
+                        foreach (var item in imgfile)
+                        {
+                            #region Check Image File Name
+                            var ImageURL = await firebase.UploadFileonFirebase(item, "PrdImages");
+                            if (ImageURL.ToString().Contains("https"))
+                            {
+                                var prdImage = new PrdImage()
+                                {
+                                    ProductId = id,
+                                    Url = ImageURL
+                                };
+                                _context.prdImages.Add(prdImage);
+                                await _context.SaveChangesAsync();
+                            }
+                            #endregion
+                        }
+                    }
+
                     _context.Update(product);
                     await _context.SaveChangesAsync();
                 }
