@@ -117,6 +117,16 @@
   "You must accept the policy before you can enable two factor authentication.": "يجب عليك قبول السياسة قبل أن تتمكن من تمكين المصادقة الثنائية.",
   "Two-factor authentication (2FA)": "تشغيل المصادقة الثناية",
   "Authenticator app": "المصادقة",
-  "buys": "المبيعات"
+  "buys": "المبيعات",
+  //Buys
+  "CreationDate": "انشاء البيانات",
+  "Discount": "الخصومات",
+  "PaymentDate": "بيانات الدفع",
+  "TotalCost": "الاجمالي",
+  "StatusId": "حالة المنتج",
+  "CardTypeId": "نوع الشراء",
+  "CartStatusId": "حالة الشراء",
+  "placeholderbuy": "ادخل رقم البيع",
+  "cart": "التسوق"
 
 }
