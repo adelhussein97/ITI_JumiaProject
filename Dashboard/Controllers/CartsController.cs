@@ -23,11 +23,22 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Carts
-        public async Task<IActionResult> Index()
-        {
-            return _context.carts != null ?
-                        View(await _context.carts.ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.carts'  is null.");
+        //public async Task<IActionResult> Index()
+        //{
+        //    return _context.carts != null ?
+        //                View(await _context.carts.ToListAsync()) :
+        //                Problem("Entity set 'ApplicationDbContext.carts'  is null.");
+        //}
+
+        // GET: Categories  
+        public async Task<IActionResult> Index(string? Filter = null)
+        {//test
+            var task = _context.carts
+                    .Where(c => Filter == null || c.StatusId.ToString().Contains(Filter.ToLower()));
+
+
+
+            return View(await task.ToListAsync());
         }
 
         // GET: Carts/Details/5
@@ -71,55 +82,55 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Carts/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.carts == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Edit(int? id)
+        //{
+        //    if (id == null || _context.carts == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var cart = await _context.carts.FindAsync(id);
-            if (cart == null)
-            {
-                return NotFound();
-            }
-            return View(cart);
-        }
+        //    var cart = await _context.carts.FindAsync(id);
+        //    if (cart == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View(cart);
+        //}
 
         // POST: Carts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CreationDate,Discount,PaymentDate,TotalCost,StatusId,CardTypeId,CartStatusId")] Cart cart)
-        {
-            if (id != cart.Id)
-            {
-                return NotFound();
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Edit(int id, [Bind("Id,CreationDate,Discount,PaymentDate,TotalCost,StatusId,CardTypeId,CartStatusId")] Cart cart)
+        //{
+        //    if (id != cart.Id)
+        //    {
+        //        return NotFound();
+        //    }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(cart);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CartExists(cart.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(cart);
-        }
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            _context.Update(cart);
+        //            await _context.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!CartExists(cart.Id))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(cart);
+        //}
 
         // GET: Carts/Delete/5
         public async Task<IActionResult> Delete(int? id)

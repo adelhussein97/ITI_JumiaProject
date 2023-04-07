@@ -111,7 +111,6 @@
   "You have 1 recovery code left.": "You have 1 recovery code left.",
   "generate a new set of recovery codes": "generate a new set of recovery codes",
   "Forget this browser": "Forget this browser",
-  "": "",
   "Reset recovery codes": "Reset recovery codes",
   "Set up authenticator app": "Set up authenticator app",
   "Reset authenticator app": "Reset authenticator app",
@@ -119,7 +118,16 @@
   "You must accept the policy before you can enable two factor authentication.": "You must accept the policy before you can enable two factor authentication.",
   "Two-factor authentication (2FA)": "Two-factor authentication (2FA)",
   "Authenticator app": "Authenticator app",
-  "buys": "buys"
+  "buys": "buys",
+  //Buys
+  "CreationDate": "CreationDate",
+  "Discount": "Discount",
+  "PaymentDate": "PaymentDate",
+  "TotalCost": "TotalCost",
+  "StatusId": "StatusId",
+  "CardTypeId": "CardTypeId",
+  "CartStatusId": "CartStatusId",
+  "placeholderbuy": "Inter your Status"
 
 
 
