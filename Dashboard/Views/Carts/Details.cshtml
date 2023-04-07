@@ -4,50 +4,54 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>@localizer["details"]</h1>
 
 <div>
-    <h4>Cart</h4>
+    @*<h4>@localizer["cart"]</h4>*@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreationDate)
+            @localizer["CreationDate"]
+
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CreationDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Discount)
+            @localizer["Discount"]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Discount)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PaymentDate)
+            @localizer["PaymentDate"]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PaymentDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TotalCost)
+            @localizer["TotalCost"]
+
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TotalCost)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StatusId)
+            @localizer["StatusId"]
+
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.StatusId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CardTypeId)
+            @localizer["CardTypeId"]
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CardTypeId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CartStatusId)
+            @localizer["CartStatusId"]
+
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CartStatusId)
@@ -55,6 +59,7 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+            <div class="form-group ">
+                <a class="btn btn-warning" asp-action="Index">@localizer["back"]</a>
+            </div>
 </div>

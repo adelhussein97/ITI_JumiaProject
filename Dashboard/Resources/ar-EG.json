@@ -126,7 +126,7 @@
   "StatusId": "حالة المنتج",
   "CardTypeId": "نوع الشراء",
   "CartStatusId": "حالة الشراء",
-  "placeholderbuy": "ادخل رقم البيع"
-
+  "placeholderbuy": "ادخل رقم البيع",
+  "cart": "التسوق"
 
 }

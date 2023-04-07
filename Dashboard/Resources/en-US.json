@@ -127,7 +127,9 @@
   "StatusId": "StatusId",
   "CardTypeId": "CardTypeId",
   "CartStatusId": "CartStatusId",
-  "placeholderbuy": "Inter your Status"
+  "placeholderbuy": "Inter your Status",
+  "cart": "Cart"
+  
 
 
 
