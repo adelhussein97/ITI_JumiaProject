@@ -1,0 +1,140 @@
+﻿@model WebApplication1.Models.Product
+@using System.Globalization;
+@{
+    ViewData["Title"] = "Details";
+}
+@{
+    var isrtl = CultureInfo.CurrentCulture.Name.StartsWith("ar");
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2 ">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item @(isrtl ? "text-start" : "text-end")"><a asp-controller="Home" asp-action="Index">@localizer["home"]</a></li>
+                <li class="breadcrumb-item  active"><a asp-controller="Products" asp-action="Index">@localizer["product"]</a></li>
+                <li class="breadcrumb-item active">@localizer["details"]</li>
+            </ol>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            @localizer["name"]
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @localizer["discount"]
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.DiscountPercent)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @localizer["description"]
+
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Discription)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @localizer["feature"]
+
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.IsFeatured)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @localizer["quantity"]
+
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Quantity)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @localizer["price"]
+
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.UnitPrice)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @localizer["date"]
+
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.InsertingDate)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @localizer["brand"]
+
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Brand.Id)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @localizer["category"]
+
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Category.Id)
+                        </dd>
+                    </dl>
+        </div>
+        <div class="col-md-6">
+                    
+                        <div class="form-group h-100">
+                            <label name="prdImage" class="form-label w-100 h4"></label>
+                            @if (Model.PrdImages is not null)
+                            {
+                            <div id="carouselExampleCaptions" class="carousel slide">
+                                
+                                <div class="carousel-inner">
+                                    @foreach (var item in Model.PrdImages)
+                                    {
+                                        <div class="carousel-item active">
+                                            <img src="@item.Url" class="d-block w-50" alt="...">
+                                            
+                                        </div>
+                                        
+                                    }
+                                   
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden"></span>
+                                </button>
+                            </div>
+                            }
+                            else
+                            {
+                                <img id="picture" class="w-75 h-75" alt="profile" src="~/img/download.png" />
+                            }
+                            
+                        </div>
+
+                  
+        </div>
+    </div>
+    
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-info" >@localizer["edit"]</a> 
+    <a asp-action="Index" class="btn btn-warning">@localizer["back"]</a>
+</div>
+
+</div>
+</section>
