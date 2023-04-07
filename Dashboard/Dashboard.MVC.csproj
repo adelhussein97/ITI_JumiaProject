@@ -34,7 +34,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\img\upload\" />
-    <Folder Include="wwwroot\PrdImages\FireBaseProduct\" />
+    <Folder Include="wwwroot\PrdImages\FireBaseProduct\CatImages\FireBaseProduct\" />
   </ItemGroup>
 
 <PropertyGroup>

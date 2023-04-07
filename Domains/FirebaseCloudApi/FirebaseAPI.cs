@@ -70,7 +70,7 @@ namespace Domains.FirebaseCloudApi
                             })
                             .Child("assets")
                             .Child($"{FolderName}")
-                            .Child($"{imgfile.FileName}")
+                            .Child($"{Guid.NewGuid()}.{imgfile.FileName}")
                             .PutAsync(stream, cancellation.Token);
 
                             task.Progress.ProgressChanged += (s, e) => Console.WriteLine($"Progress: {e.Percentage} %");

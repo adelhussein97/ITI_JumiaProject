@@ -78,6 +78,7 @@ namespace WebApplication1.Controllers
             var product = await _context.products
                 .Include(p => p.Brand)
                 .Include(p => p.Category)
+                .Include(p=>p.PrdImages)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
@@ -239,7 +240,7 @@ namespace WebApplication1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,Name,DiscountPercent,Discription,IsFeatured,Quantity,UnitPrice,InsertingDate,BrandId,CategoryId")] Product product)
+        public async Task<IActionResult> Edit(List<IFormFile> imgfile,long id, [Bind("Id,Name,DiscountPercent,Discription,IsFeatured,Quantity,UnitPrice,InsertingDate,BrandId,CategoryId")] Product product)
         {
             if (id != product.Id)
             {
@@ -250,6 +251,36 @@ namespace WebApplication1.Controllers
             {
                 try
                 {
+                    // Upload Image on Server
+                         var prdImages = _context.prdImages.Where(p=>p.ProductId==id).ToList();
+                         if (prdImages != null)
+                         {
+                            foreach (var item in prdImages)
+                            {
+                                    _context.prdImages.Remove(item);
+                            }
+                         }
+                            
+                    if (imgfile != null)
+                    {
+                        foreach (var item in imgfile)
+                        {
+                            #region Check Image File Name
+                            var ImageURL = await firebase.UploadFileonFirebase(item, "PrdImages");
+                            if (ImageURL.ToString().Contains("https"))
+                            {
+                                var prdImage = new PrdImage()
+                                {
+                                    ProductId = id,
+                                    Url = ImageURL
+                                };
+                                _context.prdImages.Add(prdImage);
+                                await _context.SaveChangesAsync();
+                            }
+                            #endregion
+                        }
+                    }
+
                     _context.Update(product);
                     await _context.SaveChangesAsync();
                 }

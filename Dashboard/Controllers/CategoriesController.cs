@@ -68,15 +68,15 @@ namespace WebApplication1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(IFormFile imgfile, [Bind("Id,Name,Image,Description")] Category category)
+        public async Task<IActionResult> Create(IFormFile imgFile, [Bind("Id,Name,Image,Description")] Category category)
         {
             if (ModelState.IsValid)
             {
                 #region Upload Image on Server Root and Save URL in DBs
                     
-                    if(imgfile!=null)
+                    if(imgFile!=null)
                     {
-                        var ImageURL = await firebase.UploadFileonFirebase(imgfile, "CatImages");
+                        var ImageURL = await firebase.UploadFileonFirebase(imgFile, "CatImages");
                         if (ImageURL.ToString().Contains("https"))
                             category.Image =ImageURL;
                     }
@@ -112,7 +112,7 @@ namespace WebApplication1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Image,Description")] Category category)
+        public async Task<IActionResult> Edit(IFormFile imgFile,int id, [Bind("Id,Name,Image,Description")] Category category)
         {
             if (id != category.Id)
             {
@@ -123,6 +123,12 @@ namespace WebApplication1.Controllers
             {
                 try
                 {
+                    if (imgFile != null)
+                    {
+                        var ImageURL = await firebase.UploadFileonFirebase(imgFile, "CatImages");
+                        if (ImageURL.ToString().Contains("https"))
+                            category.Image = ImageURL;
+                    }
                     _context.Update(category);
                     await _context.SaveChangesAsync();
                 }
