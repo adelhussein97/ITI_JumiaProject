@@ -71,7 +71,7 @@
   "sendverificationemail": "Send Verification Email",
   "newemail": "New Email",
   "changeemail": "Change Email",
-
+  "RoleId": "Role",
   "Delete Personal Data": "Delete Personal Data",
   "Delete data and close my account": "Delete data and close my account",
 
@@ -129,7 +129,7 @@
   "CartStatusId": "CartStatusId",
   "placeholderbuy": "Inter your Status",
   "cart": "Cart"
-  
+
 
 
 

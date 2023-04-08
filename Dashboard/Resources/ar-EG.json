@@ -81,6 +81,7 @@
   "sendverificationemail": "ارسل ايميل التفعيل",
   "newemail": "البريد الالكتروني الجديد",
   "changeemail": "تغيير البريد الالكتروني",
+  "RoleId": "الصلاحية",
   //Footer
   "footercopy": "حقوق النشر © 2023-2024",
   "footerteam": "فريق وزراة الاتصالات ITI ",
