@@ -26,8 +26,11 @@ namespace WebApplication1.Controllers
             this._stringLocalizer = stringLocalizer;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+
+            var task = context.categories;
+
             ViewBag.name = _stringLocalizer["welcome"];
 
 
@@ -35,6 +38,7 @@ namespace WebApplication1.Controllers
             ViewBag.Count = context.categories.Count();
 
             ViewBag.Details = context.products.ToList();
+            var TaskProducts = context.products.Include(p=>p.PrdImages).ToList();
             ViewBag.Product = context.products.Count();
 
             ViewBag.Details = context.brands.ToList();
@@ -43,7 +47,7 @@ namespace WebApplication1.Controllers
             ViewBag.Details = context.Users.ToList();
             ViewBag.User = context.Users.Count();
 
-            return View();
+            return View(await task.ToListAsync());
         }
      
 

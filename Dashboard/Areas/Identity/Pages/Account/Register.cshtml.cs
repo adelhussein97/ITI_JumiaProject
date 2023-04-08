@@ -13,11 +13,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using WebApplication1.Data;
 
 namespace WebApplication1.Areas.Identity.Pages.Account
 {
@@ -29,13 +33,14 @@ namespace WebApplication1.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-
+        private readonly ApplicationDbContext context;
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+             ApplicationDbContext _context)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -43,6 +48,7 @@ namespace WebApplication1.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            context = _context;
         }
 
         /// <summary>
@@ -70,6 +76,10 @@ namespace WebApplication1.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+
+           
+           
+
             [Required]
             public string FirstName { get; set; }
 
@@ -83,6 +93,9 @@ namespace WebApplication1.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             public string Email { get; set; }
+
+            
+            public string RoleId { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -105,6 +118,12 @@ namespace WebApplication1.Areas.Identity.Pages.Account
         public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
+
+            RoleStore<IdentityRole> roleStore = new RoleStore<IdentityRole>(context);
+
+            ViewData["RoleId"] = new SelectList(await roleStore.Roles.ToListAsync(), "Id", "Name");
+
+
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
