@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ITI_Jumiaaa.DbContext;
 using WebApplication1.Models;
+using DomainLayer.Models.Enum;
 
 namespace ITI_Jumiaaa.API.Controllers
 {
@@ -26,6 +27,16 @@ namespace ITI_Jumiaaa.API.Controllers
           }
           var result= await _context.shippings.ToListAsync();
             return Ok(result);
+        }
+
+        // GET: api/Shippings
+        [HttpGet]
+        public async Task<IActionResult> GetGovernates()
+        {
+            var _statusList = from Governorate d in Enum.GetValues(typeof(Governorate))
+                              select new { Id = (int)d, Name = d.ToString() };
+           
+            return Ok(_statusList);
         }
 
         // GET: api/Shippings/5
