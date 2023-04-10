@@ -5,7 +5,7 @@ using WebApplication1.Models;
 
 namespace ITI_Jumiaaa.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ReviewsController : ControllerBase
     {

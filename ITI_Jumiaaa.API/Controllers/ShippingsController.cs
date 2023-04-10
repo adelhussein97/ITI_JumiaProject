@@ -6,7 +6,7 @@ using DomainLayer.Models.Enum;
 
 namespace ITI_Jumiaaa.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ShippingsController : ControllerBase
     {
@@ -30,14 +30,14 @@ namespace ITI_Jumiaaa.API.Controllers
         }
 
         // GET: api/Shippings
-        [HttpGet]
-        public async Task<IActionResult> GetGovernates()
-        {
-            var _statusList = from Governorate d in Enum.GetValues(typeof(Governorate))
-                              select new { Id = (int)d, Name = d.ToString() };
+        //[HttpGet]
+        //public async Task<IActionResult> GetGovernates()
+        //{
+        //    var _statusList =  from Governorate d in Enum.GetValues(typeof(Governorate))
+        //                       select new { Id = (int)d, Name = d.ToString() };
            
-            return Ok(_statusList);
-        }
+        //    return Ok(_statusList);
+        //}
 
         // GET: api/Shippings/5
         [HttpGet("{id}")]
