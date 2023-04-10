@@ -31,12 +31,12 @@
                 <input asp-for="Input.Email" class="text-end  form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
-            <div class="w-50 m-auto form-floating mb-3">
+           @* <div class="w-50 m-auto form-floating mb-3">
                 <label class="control-label">@localizer["userRole"]</label>
                 <select tabindex="7" required asp-for="Input.RoleId" class="form-control" asp-items="ViewBag.RoleId"></select>
                 <span class="invalid-feedback">Choose User Role</span>
 
-            </div>
+            </div>*@
             <div class="w-50 m-auto form-floating mb-3">
                 <label asp-for="Input.Password">@localizer["password"]</label>
                 <input asp-for="Input.Password" class="text-end form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
