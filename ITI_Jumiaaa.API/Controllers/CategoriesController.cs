@@ -5,7 +5,7 @@ using WebApplication1.Models;
 
 namespace ITI_Jumiaaa.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
@@ -38,7 +38,7 @@ namespace ITI_Jumiaaa.API.Controllers
 
 
         // GET: api/Categories/5
-        [HttpGet("{/id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetProductsByCategoryId([FromRoute] int id)
         {
             if (_context.products == null)
