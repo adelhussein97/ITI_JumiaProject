@@ -20,14 +20,17 @@ namespace ITI_Jumiaaa.API.Controllers
     public class AuthController : ControllerBase
     {
         #region Fields
+
         public static User user = new User();
         private readonly IConfiguration configuration;
         private readonly APIContext context;
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly JWT _jWT; 
-        #endregion
+        private readonly JWT _jWT;
+
+        #endregion Fields
 
         #region Injection Services
+
         public AuthController(IConfiguration configuration, APIContext context, UserManager<ApplicationUser> userManager, IOptions<JWT> jWT)
         {
             this.configuration = configuration;
@@ -36,10 +39,10 @@ namespace ITI_Jumiaaa.API.Controllers
             this._jWT = jWT.Value;
         }
 
-        #endregion
-
+        #endregion Injection Services
 
         #region Register Action API
+
         //Register New Account
         [HttpPost("Register")]
         public async Task<IActionResult> RegisterAsync([FromBody] UserDto request)
@@ -54,12 +57,14 @@ namespace ITI_Jumiaaa.API.Controllers
             // Return Specific Values
             //return Ok(new { Token=result.Token,Expire=result.ExpireOn});
 
-            // Return All values 
+            // Return All values
             return Ok(result);
-        } 
-        #endregion
+        }
 
-        #region Register Method 
+        #endregion Register Action API
+
+        #region Register Method
+
         private async Task<AuthenticationUser> RegisterAuth(UserDto request)
         {
             // Check Email exist on Db or not
@@ -76,7 +81,7 @@ namespace ITI_Jumiaaa.API.Controllers
             user.PasswordSalt = passwordsalt;
             user.FirstName = request.FirstName;
             user.LastName = request.LastName;
-           // user.ProfilePicture = request.ProfilePicture;
+            // user.ProfilePicture = request.ProfilePicture;
             //user.City = request.City;
             //user.FullAddress = request.FullAddress;
             //user.GenderId = request.GenderId;
@@ -93,7 +98,6 @@ namespace ITI_Jumiaaa.API.Controllers
                     errors += $"{item.Description} , ";
                 }
                 return new AuthenticationUser { Message = errors };
-
             }
             // Assign Role to User
             await userManager.AddToRoleAsync(user, "User");
@@ -103,23 +107,24 @@ namespace ITI_Jumiaaa.API.Controllers
 
             return new AuthenticationUser
             {
+                Id = user.Id,
                 Email = user.Email,
                 ExpireOn = jwtSecurityToken.ValidTo,
                 IsAuthenticated = true,
                 RolesList = new List<string> { "User" },
                 Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken),
                 UserName = user.UserName
-
             };
         }
 
-        #endregion
+        #endregion Register Method
 
-        #region Create Token From USer After Register 
+        #region Create Token From USer After Register
+
         private async Task<JwtSecurityToken> CreateTokenJWTAfterRegister(ApplicationUser user)
         {
             var userClaims = await userManager.GetClaimsAsync(user);
-            var roles=await userManager.GetRolesAsync(user);
+            var roles = await userManager.GetRolesAsync(user);
             var roleClaims = new List<Claim>();
             foreach (var role in roles)
             {
@@ -143,19 +148,20 @@ namespace ITI_Jumiaaa.API.Controllers
 
             var jwtSecurityToken = new JwtSecurityToken
                 (
-                    issuer:_jWT.Issuer,
+                    issuer: _jWT.Issuer,
                     audience: _jWT.Audience,
                     claims: claims,
-                    expires:DateTime.Now.AddDays(_jWT.DurationDays),
-                    signingCredentials:cred
+                    expires: DateTime.Now.AddDays(_jWT.DurationDays),
+                    signingCredentials: cred
                 );
 
             return jwtSecurityToken;
         }
-        #endregion
 
+        #endregion Create Token From USer After Register
 
         #region Login Action API
+
         // Login Account
         [HttpPost("Login")]
         public async Task<ActionResult<string>> LoginAsync([FromBody] UserLogin request)
@@ -169,9 +175,10 @@ namespace ITI_Jumiaaa.API.Controllers
             return Ok(result);
         }
 
-        #endregion
+        #endregion Login Action API
 
         #region Validate Username or Password True or Not
+
         private async Task<AuthenticationUser> CheckUserExistOrNot(UserLogin request)
         {
             AuthenticationUser authModel = new AuthenticationUser();
@@ -181,11 +188,12 @@ namespace ITI_Jumiaaa.API.Controllers
             if (user is null || !await userManager.CheckPasswordAsync(user, request.Password))
                 return new AuthenticationUser { Message = "Email or Password is Incorrect!!" };
 
-            var jwtSecurityToken =await CreateTokenJWTAfterRegister(user);
+            var jwtSecurityToken = await CreateTokenJWTAfterRegister(user);
 
-            // If True USername and PAssword 
+            // If True USername and PAssword
+            authModel.Id = user.Id;
             authModel.IsAuthenticated = true;
-            authModel.Token= CreateToken(user);
+            authModel.Token = CreateToken(user);
             authModel.Email = user.Email;
             authModel.UserName = user.UserName;
             authModel.ExpireOn = jwtSecurityToken.ValidTo;
@@ -195,11 +203,12 @@ namespace ITI_Jumiaaa.API.Controllers
             authModel.RolesList = RolesList.ToList();
 
             return authModel;
+        }
 
-        } 
-        #endregion
+        #endregion Validate Username or Password True or Not
 
         #region Create Token from USer Login
+
         private string CreateToken(ApplicationUser user)
         {
             List<Claim> claims = new List<Claim>()
@@ -218,15 +227,16 @@ namespace ITI_Jumiaaa.API.Controllers
                 expires: DateTime.Now.AddDays(1),
                 signingCredentials: cred);
 
-            // then get token and return it 
+            // then get token and return it
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
 
             return jwt;
         }
-        #endregion
 
+        #endregion Create Token from USer Login
 
         #region Create PAssword Hash with Algorithm HMACSHA512
+
         // Create Password Hash with JWT Json Web Token
         private void CreatePasswordHash(string password, out byte[] passwordhash, out byte[] passwordsalt)
         {
@@ -238,9 +248,10 @@ namespace ITI_Jumiaaa.API.Controllers
             }
         }
 
-        #endregion
+        #endregion Create PAssword Hash with Algorithm HMACSHA512
 
-        #region Verify Password Hash 
+        #region Verify Password Hash
+
         // Verify Password HAsh
         private bool VerifyPasswordHash(string password, byte[] passwordhash, byte[] passwordsalt)
         {
@@ -251,8 +262,8 @@ namespace ITI_Jumiaaa.API.Controllers
                 // if login successfully
                 return computedHash.SequenceEqual(passwordhash);
             }
+        }
 
-        } 
-        #endregion
+        #endregion Verify Password Hash
     }
 }

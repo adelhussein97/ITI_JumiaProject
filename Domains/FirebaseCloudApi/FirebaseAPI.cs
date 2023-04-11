@@ -16,6 +16,7 @@ namespace Domains.FirebaseCloudApi
 
         // Fields of Firebase
         private static string WebApiKey = "AIzaSyCFNbwSpqcUh86iMDxz__PoR0SLhy_4XEo";
+
         private static string Bucket = "itijumia.appspot.com";
         private static string AuthEmail = "testinguploadimage@gmail.com";
         private static string AuthPassword = "ITI@12345";
@@ -23,7 +24,8 @@ namespace Domains.FirebaseCloudApi
         public FirebaseAPI(IHostingEnvironment _hostEnvironment) => hostEnvironment = _hostEnvironment;
 
         #region Upload File on Firebas API Cloud Storage
-        public async Task<string> UploadFileonFirebase(IFormFile imgfile,string FolderName)
+
+        public async Task<string> UploadFileonFirebase(IFormFile imgfile, string FolderName)
         {
             // Upload File to Firebase
             FileStream stream = null!;
@@ -41,7 +43,6 @@ namespace Domains.FirebaseCloudApi
                             await imgfile.CopyToAsync(stream);
                         }
                         stream = new FileStream(Path.Combine(path, imgfile.FileName), FileMode.Open);
-
                     }
                     else
                     {
@@ -49,11 +50,9 @@ namespace Domains.FirebaseCloudApi
                         // stream = new FileStream(Path.Combine(path, imgfile.FileName), FileMode.Create);
                     }
 
-
                     // Firebase Uploading Stuffs
                     var auth = new FirebaseAuthProvider(new FirebaseConfig(WebApiKey));
                     var a = await auth.SignInWithEmailAndPasswordAsync(AuthEmail, AuthPassword);
-
 
                     // you can use CancellationTokenSource to cancel the upload midway
                     var cancellation = new CancellationTokenSource();
@@ -75,27 +74,20 @@ namespace Domains.FirebaseCloudApi
 
                             task.Progress.ProgressChanged += (s, e) => Console.WriteLine($"Progress: {e.Percentage} %");
 
-
                             var URL = await task;
                             return URL;
                         }
-
-
-
                     }
                     catch (Exception ex)
                     {
                         return $"Exception was thrown: {ex}";
                     }
-
                 }
             }
 
             return "Error on Uploading on Firebase";
         }
 
-        
-        #endregion
-
+        #endregion Upload File on Firebas API Cloud Storage
     }
 }

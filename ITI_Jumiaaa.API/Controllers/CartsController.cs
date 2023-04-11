@@ -25,11 +25,11 @@ namespace ITI_Jumiaaa.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Getcarts()
         {
-          if (_context.carts == null)
-          {
-              return NotFound();
-          }
-          var result= await _context.carts.ToListAsync();
+            if (_context.carts == null)
+            {
+                return NotFound();
+            }
+            var result = await _context.carts.ToListAsync();
             return Ok(result);
         }
 
@@ -37,10 +37,10 @@ namespace ITI_Jumiaaa.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCart([FromRoute] int id)
         {
-          if (_context.carts == null)
-          {
-              return NotFound();
-          }
+            if (_context.carts == null)
+            {
+                return NotFound();
+            }
             var cart = await _context.carts.FindAsync(id);
 
             if (cart == null)
@@ -87,10 +87,10 @@ namespace ITI_Jumiaaa.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCart(Cart cart)
         {
-          if (_context.carts == null)
-          {
-              return Problem("Entity set 'APIContext.carts'  is null.");
-          }
+            if (_context.carts == null)
+            {
+                return Problem("Entity set 'APIContext.carts'  is null.");
+            }
             _context.carts.Add(cart);
             await _context.SaveChangesAsync();
 
