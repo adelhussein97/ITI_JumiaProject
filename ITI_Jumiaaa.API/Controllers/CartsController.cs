@@ -33,6 +33,17 @@ namespace ITI_Jumiaaa.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        public int GetLastId()
+        {
+            if (_context.carts == null)
+            {
+                return 0;
+            }
+            var result =  _context.carts.Max(p => p.Id);
+            return result;
+        }
+
         // GET: api/Carts/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCart([FromRoute] int id)
