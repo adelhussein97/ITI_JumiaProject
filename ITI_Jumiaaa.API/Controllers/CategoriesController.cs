@@ -5,7 +5,7 @@ using WebApplication1.Models;
 
 namespace ITI_Jumiaaa.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
@@ -34,23 +34,27 @@ namespace ITI_Jumiaaa.API.Controllers
             return Ok(result);
         }
 
+        
+
+
         // GET: api/Categories/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCategory([FromRoute] int id)
+        public async Task<IActionResult> GetProductsByCategoryId([FromRoute] int id)
         {
-          if (_context.categories == null)
-          {
-              return NotFound();
-          }
-            var category = await _context.categories.FindAsync(id);
+            if (_context.products == null)
+            {
+                return NotFound();
+            }
+            var products = await _context.products.Where(p=>p.CategoryId==id).ToListAsync();
 
-            if (category == null)
+            if (products == null)
             {
                 return NotFound();
             }
 
-            return Ok(category);
+            return Ok(products);
         }
+
 
         // PUT: api/Categories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

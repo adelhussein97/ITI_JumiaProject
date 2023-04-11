@@ -10,7 +10,7 @@ using WebApplication1.Models;
 
 namespace ITI_Jumiaaa.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CartsController : ControllerBase
     {
@@ -31,6 +31,17 @@ namespace ITI_Jumiaaa.API.Controllers
             }
             var result = await _context.carts.ToListAsync();
             return Ok(result);
+        }
+
+        [HttpGet]
+        public int GetLastId()
+        {
+            if (_context.carts == null)
+            {
+                return 0;
+            }
+            var result =  _context.carts.Max(p => p.Id);
+            return result;
         }
 
         // GET: api/Carts/5
