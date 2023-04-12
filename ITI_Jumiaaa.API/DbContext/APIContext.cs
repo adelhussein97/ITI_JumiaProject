@@ -25,6 +25,8 @@ namespace ITI_Jumiaaa.DbContext
         public DbSet<Brand> brands { get; set; }
         public DbSet<Category> categories { get; set; }
 
+
+
         //protected override void OnModelCreating(ModelBuilder builder)
         //{
         //    base.OnModelCreating(builder);
