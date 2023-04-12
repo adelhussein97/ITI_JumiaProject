@@ -23,13 +23,13 @@ namespace ITI_Jumiaaa.API.Controllers
 
         // GET: api/Carts
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetcartsByUserId([FromRoute] int id)
+        public async Task<IActionResult> GetcartsByUserId([FromRoute] string id)
         {
           if (_context.carts == null)
           {
               return NotFound();
           }
-          var result= await _context.carts.Where(p=>p.ApplicationUserId==id).ToListAsync();
+          var result= await _context.carts.Where(p=>p.ApplicationUser.Id==id).ToListAsync();
            
           return Ok(result);
         }

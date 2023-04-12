@@ -18,11 +18,13 @@ namespace WebApplication1.Models
         public int? TotalCost { get; set; }
 
         public int? StatusId { get; set; }
-        public int? ApplicationUserId { get; set; }
+       
 
         public CardType? CardTypeId { get; set; }
 
         public CartStatus? CartStatusId { get; set; }
+
+        public ApplicationUser ApplicationUser { get; set; }
 
         public IEnumerable<CartItem>? CartItemId { get; set; }
     }
