@@ -44,6 +44,7 @@
   "feature": "Is Feature",
   "date": "Date",
   "category": "Category",
+  "confirm": "Confirm Order",
   "msgdelete": "Are you sure you want to delete this?",
   //Brands
   "Type your keywords here": "Type your keywords here",

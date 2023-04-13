@@ -114,12 +114,11 @@ namespace WebApplication1.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
+              try
                 {
                     _context.Update(cart);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -132,9 +131,8 @@ namespace WebApplication1.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(cart);
+            
+            //return View(cart);
         }
 
         // GET: Carts/Delete/5
