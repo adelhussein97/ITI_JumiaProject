@@ -63,10 +63,7 @@
                 @localizer["TotalCost"]
 
             </th>
-            <th>
-                @localizer["StatusId"]
-
-            </th>
+           
             <th>
                 @localizer["CardTypeId"]
 
@@ -98,9 +95,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.TotalCost)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StatusId)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.CardTypeId)
             </td>
@@ -114,6 +109,9 @@
                         </a>
                         <a asp-action="Details" asp-route-id="@item.Id" type="button" class="btn btn-info">
                             <i class="fa fa-eye"></i>
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" type="button" class="btn btn-warning">
+                            <i class=" fa fa-hand-point-right"></i>
                         </a>
                     </div>
                 </td>

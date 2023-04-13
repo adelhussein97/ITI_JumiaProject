@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using DomainLayer.Models.Enum;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Build.Framework;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Models;
@@ -82,55 +84,56 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Carts/Edit/5
-        //public async Task<IActionResult> Edit(int? id)
-        //{
-        //    if (id == null || _context.carts == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null || _context.carts == null)
+            {
+                return NotFound();
+            }
 
-        //    var cart = await _context.carts.FindAsync(id);
-        //    if (cart == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(cart);
-        //}
+            var cart = await _context.carts.FindAsync(id);
+            var _statusList = from CartStatus d in Enum.GetValues(typeof(CartStatus))
+                              select new { Id = (int)d, Name = d.ToString() };
+            ViewBag.Status = new SelectList(_statusList, "Id", "Name");
+            if (cart == null)
+            {
+                return NotFound();
+            }
+            return View(cart);
+        }
 
         // POST: Carts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, [Bind("Id,CreationDate,Discount,PaymentDate,TotalCost,StatusId,CardTypeId,CartStatusId")] Cart cart)
-        //{
-        //    if (id != cart.Id)
-        //    {
-        //        return NotFound();
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CreationDate,Discount,PaymentDate,TotalCost,StatusId,CardTypeId,CartStatusId")] Cart cart)
+        {
+            if (id != cart.Id)
+            {
+                return NotFound();
+            }
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            _context.Update(cart);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!CartExists(cart.Id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(cart);
-        //}
+              try
+                {
+                    _context.Update(cart);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CartExists(cart.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            
+            //return View(cart);
+        }
 
         // GET: Carts/Delete/5
         public async Task<IActionResult> Delete(int? id)

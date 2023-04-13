@@ -4,62 +4,67 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<section class="content">
+    <div class="container-fluid">
+       
+        <h1>@localizer["confirm"]</h1>
 
-<h4>Cart</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="CreationDate" class="control-label"></label>
-                <input asp-for="CreationDate" class="form-control" />
-                <span asp-validation-for="CreationDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Discount" class="control-label"></label>
-                <input asp-for="Discount" class="form-control" />
-                <span asp-validation-for="Discount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PaymentDate" class="control-label"></label>
-                <input asp-for="PaymentDate" class="form-control" />
-                <span asp-validation-for="PaymentDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TotalCost" class="control-label"></label>
-                <input asp-for="TotalCost" class="form-control" />
-                <span asp-validation-for="TotalCost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StatusId" class="control-label"></label>
-                <input asp-for="StatusId" class="form-control" />
-                <span asp-validation-for="StatusId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CardTypeId" class="control-label"></label>
-                <input asp-for="CardTypeId" class="form-control" />
-                <span asp-validation-for="CardTypeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CartStatusId" class="control-label"></label>
-                <input asp-for="CartStatusId" class="form-control" />
-                <span asp-validation-for="CartStatusId" class="text-danger"></span>
-            </div>
+        <h4>Cart</h4>
+        <hr />
 
-            <div class="form-group">
-                <input type="submit" value=@localizer["edit"] class="btn btn-info" />
-            </div>
-            <div class="form-group ">
-                <a class="btn btn-warning" asp-action="Index">@localizer["back"]</a>
-            </div>
-        </form>
+        <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden"  asp-for="Id" />
+
+                    <div class="form-group">
+                        <label asp-for="Id" class="control-label">@localizer["no"]</label>
+                        <input disabled asp-for="Id" />
+                        <input asp-for="CreationDate" type="hidden" class="form-control" />
+                        <span asp-validation-for="CreationDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="Discount" type="hidden" class="form-control" />
+                        <span asp-validation-for="Discount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="PaymentDate" type="hidden" class="form-control" />
+                        <span asp-validation-for="PaymentDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="TotalCost" type="hidden" class="form-control" />
+                        <span asp-validation-for="TotalCost" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="StatusId" type="hidden" class="form-control" />
+                        <span asp-validation-for="StatusId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="CardTypeId" type="hidden" class="form-control" />
+                        <span asp-validation-for="CardTypeId" class="text-danger"></span>
+                    </div>
+
+                <div class="form-group">
+                    <label asp-for="CartStatusId" class="control-label">@localizer["confirm"]</label>
+                    <select tabindex="8" required asp-for="CartStatusId" class="form-control" asp-items=" ViewBag.Status"></select>
+                    <span asp-validation-for="CartStatusId" class="text-danger"></span>
+
+                </div>
+           
+
+                <div class="form-group">
+                    <input type="submit" value=@localizer["confirm"] class="btn btn-info" />
+                    <a class="btn btn-warning" asp-action="Index">@localizer["back"]</a>
+                </div>
+            
+            </form>
+        </div>
     </div>
-</div>
 
-
+    </div>
+</section>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
