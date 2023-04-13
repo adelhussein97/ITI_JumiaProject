@@ -15,39 +15,32 @@
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="CreationDate" class="control-label"></label>
-                <input asp-for="CreationDate" class="form-control" />
+                <input asp-for="CreationDate" disabled class="form-control" />
                 <span asp-validation-for="CreationDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Discount" class="control-label"></label>
-                <input asp-for="Discount" class="form-control" />
+                <input asp-for="Discount" disabled class="form-control" />
                 <span asp-validation-for="Discount" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PaymentDate" class="control-label"></label>
-                <input asp-for="PaymentDate" class="form-control" />
+                <input asp-for="PaymentDate" disabled class="form-control" />
                 <span asp-validation-for="PaymentDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TotalCost" class="control-label"></label>
-                <input asp-for="TotalCost" class="form-control" />
+                <input asp-for="TotalCost" disabled class="form-control" />
                 <span asp-validation-for="TotalCost" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="StatusId" class="control-label"></label>
-                <input asp-for="StatusId" class="form-control" />
-                <span asp-validation-for="StatusId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CardTypeId" class="control-label"></label>
-                <input asp-for="CardTypeId" class="form-control" />
-                <span asp-validation-for="CardTypeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CartStatusId" class="control-label"></label>
-                <input asp-for="CartStatusId" class="form-control" />
+                <label asp-for="CartStatusId" class="control-label">@localizer["category"]</label>
+                <select tabindex="8" required asp-for="CartStatusId" class="form-control" asp-items=" ViewBag.Status"></select>
                 <span asp-validation-for="CartStatusId" class="text-danger"></span>
+
             </div>
+           
 
             <div class="form-group">
                 <input type="submit" value=@localizer["edit"] class="btn btn-info" />
