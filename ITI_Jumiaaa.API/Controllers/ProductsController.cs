@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ITI_Jumiaaa.DbContext;
 using WebApplication1.Models;
+using ITI_Jumiaaa.API.dtos;
 
 namespace ITI_Jumiaaa.API.Controllers
 {
@@ -20,14 +21,35 @@ namespace ITI_Jumiaaa.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllProductsAsync([FromQuery] string? Filter = null)
         {
-          if (_context.products == null)
-          {
-              return NotFound();
-          }
-          var result = await _context.products.Where(c => Filter == null ||
-                                     c.Name.ToLower().Contains(Filter.ToLower())).ToListAsync();
+            if (_context.products == null)
+            {
+                return NotFound();
+            }
+            var result = await _context.products.Where(c => Filter == null ||
+                                       c.Name.ToLower().Contains(Filter.ToLower())).ToListAsync();
 
             return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("GetAllProductsWithImgs")]
+        public async Task<IActionResult> GetAllProducts()
+        {
+            var products = await _context.products.Include(c => c.PrdImages).Include(b => b.Brand).Include(cat => cat.Category)
+                .Select(c => new ProductViewModel()
+                {
+                    id = c.Id,
+                    name = c.Name,
+                    imageurl = c.PrdImages.FirstOrDefault().Url,
+                    discountpercent = c.DiscountPercent,
+                    discription = c.Discription,
+                    quantity = c.Quantity,
+                    unitprice = c.UnitPrice,
+                    insertingdate = c.InsertingDate,
+                    brandId = c.BrandId,
+                    categoryId = c.CategoryId
+                }).ToListAsync();
+            return Ok(products);
         }
 
         // GET: api/ProductsImages
@@ -39,7 +61,7 @@ namespace ITI_Jumiaaa.API.Controllers
                 return NotFound();
             }
             var result = await _context.prdImages.Where(c => Filter == null ||
-                                       c.ProductId==Filter).ToListAsync();
+                                       c.ProductId == Filter).ToListAsync();
 
             return Ok(result);
         }
@@ -48,10 +70,10 @@ namespace ITI_Jumiaaa.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct([FromRoute] long id)
         {
-          if (_context.products == null)
-          {
-              return NotFound();
-          }
+            if (_context.products == null)
+            {
+                return NotFound();
+            }
             var product = await _context.products.FindAsync(id);
 
             if (product == null)
@@ -61,6 +83,7 @@ namespace ITI_Jumiaaa.API.Controllers
 
             return Ok(product);
         }
+
         // GET: api/Products/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductImages([FromRoute] long id)
@@ -69,7 +92,7 @@ namespace ITI_Jumiaaa.API.Controllers
             {
                 return NotFound();
             }
-            var productImages = await _context.prdImages.Where(c=>c.ProductId==id).ToListAsync();
+            var productImages = await _context.prdImages.Where(c => c.ProductId == id).ToListAsync();
 
             if (productImages == null)
             {
@@ -113,12 +136,12 @@ namespace ITI_Jumiaaa.API.Controllers
         // POST: api/Products
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<IActionResult> AddProduct([FromBody]Product product)
+        public async Task<IActionResult> AddProduct([FromBody] Product product)
         {
-          if (_context.products == null)
-          {
-              return Problem("Entity set 'APIContext.products'  is null.");
-          }
+            if (_context.products == null)
+            {
+                return Problem("Entity set 'APIContext.products'  is null.");
+            }
             _context.products.Add(product);
             await _context.SaveChangesAsync();
 

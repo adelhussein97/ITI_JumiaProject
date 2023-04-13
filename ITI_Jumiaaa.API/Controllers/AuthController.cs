@@ -1,10 +1,12 @@
 ﻿using Azure.Core;
+using ITI_Jumiaaa.API.dtos;
 using ITI_Jumiaaa.API.Helper;
 using ITI_Jumiaaa.API.Models;
 using ITI_Jumiaaa.API.ModelsDto;
 using ITI_Jumiaaa.DbContext;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using NuGet.ProjectModel;
@@ -28,6 +30,84 @@ namespace ITI_Jumiaaa.API.Controllers
         private readonly JWT _jWT;
 
         #endregion Fields
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(string id, [FromBody] UserData model)
+        {
+            // Retrieve the user from your data store
+            var user = await context.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // Update the user's firstname and lastname
+            user.FirstName = model.firstname ?? user.FirstName;
+            user.LastName = model.lastname ?? user.LastName;
+            user.City = model.City ?? user.City;
+            user.FullAddress = model.FullAddress ?? user.FullAddress;
+            user.Email = model.Email ?? user.Email;
+
+            // Save changes to the data store
+            await context.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetUser(string id)
+        {
+            var User = context.Users.Find(id);
+            if (User is null) return NotFound();
+            var user = new UserData
+            {
+                firstname = User.FirstName,
+                lastname = User.LastName,
+                City = User.City,
+                FullAddress = User.FullAddress,
+                Email = User.Email
+            };
+
+            return Ok(user);
+        }
+
+        [HttpPost]
+        [Route("/changepassword")]
+        public async Task<IActionResult> ChangePassword([FromForm] string currentPassword, [FromForm] string newPassword, [FromForm] string confirmPassword)
+        {
+            string userId = "0a841527-1165-460b-b012-c6842abf7bcf";
+
+            var user = await userManager.FindByIdAsync(userId);
+            bool passwordMatch = await userManager.CheckPasswordAsync(user, currentPassword);
+
+            if (!passwordMatch)
+            {
+                ModelState.AddModelError(string.Empty, "The current password is incorrect.");
+                return BadRequest(ModelState);
+            }
+
+            if (newPassword != confirmPassword)
+            {
+                ModelState.AddModelError(string.Empty, "The new password and confirm password fields must match.");
+                return BadRequest(ModelState);
+            }
+
+            var result = await userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+                return BadRequest(ModelState);
+            }
+        }
 
         #region Injection Services
 
