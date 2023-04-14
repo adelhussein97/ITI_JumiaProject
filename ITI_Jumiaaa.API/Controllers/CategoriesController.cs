@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ITI_Jumiaaa.DbContext;
 using WebApplication1.Models;
+using ITI_Jumiaaa.API.dtos;
 
 namespace ITI_Jumiaaa.API.Controllers
 {
@@ -20,10 +21,10 @@ namespace ITI_Jumiaaa.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Getcategories([FromQuery] string? Filter = null)
         {
-          if (_context.categories == null)
-          {
-              return NotFound();
-          }
+            if (_context.categories == null)
+            {
+                return NotFound();
+            }
             var result = await _context.categories.Where(c => Filter == null ||
               c.Name.ToLower().Contains(Filter.ToLower())).ToListAsync();
             if (result == null)
@@ -34,27 +35,26 @@ namespace ITI_Jumiaaa.API.Controllers
             return Ok(result);
         }
 
-        
-
-
         // GET: api/Categories/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductsByCategoryId([FromRoute] int id)
         {
-            if (_context.products == null)
-            {
-                return NotFound();
-            }
-            var products = await _context.products.Where(p=>p.CategoryId==id).ToListAsync();
-
-            if (products == null)
-            {
-                return NotFound();
-            }
-
+            var products = await _context.products.Include(c => c.PrdImages).Include(b => b.Brand).Include(cat => cat.Category)
+              .Select(c => new ProductViewModel()
+              {
+                  id = c.Id,
+                  name = c.Name,
+                  imageurl = c.PrdImages.FirstOrDefault().Url,
+                  discountpercent = c.DiscountPercent,
+                  discription = c.Discription,
+                  quantity = c.Quantity,
+                  unitprice = c.UnitPrice,
+                  insertingdate = c.InsertingDate,
+                  brandId = c.BrandId,
+                  categoryId = c.CategoryId
+              }).Where(c => c.categoryId == id).ToListAsync();
             return Ok(products);
         }
-
 
         // PUT: api/Categories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -90,12 +90,12 @@ namespace ITI_Jumiaaa.API.Controllers
         // POST: api/Categories
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<IActionResult> AddCategory([FromBody]Category category)
+        public async Task<IActionResult> AddCategory([FromBody] Category category)
         {
-          if (_context.categories == null)
-          {
-              return Problem("Entity set 'APIContext.categories'  is null.");
-          }
+            if (_context.categories == null)
+            {
+                return Problem("Entity set 'APIContext.categories'  is null.");
+            }
             _context.categories.Add(category);
             await _context.SaveChangesAsync();
 
