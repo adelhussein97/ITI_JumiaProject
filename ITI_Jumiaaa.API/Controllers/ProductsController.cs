@@ -52,6 +52,27 @@ namespace ITI_Jumiaaa.API.Controllers
             return Ok(products);
         }
 
+        [HttpGet]
+        [Route("GetAllProductsWithImgs/{id}")]
+        public async Task<IActionResult> GetAllProducts(long id)
+        {
+            var products = await _context.products.Include(c => c.PrdImages).Include(b => b.Brand).Include(cat => cat.Category)
+                .Select(c => new ProductViewModel()
+                {
+                    id = c.Id,
+                    name = c.Name,
+                    imageurl = c.PrdImages.FirstOrDefault().Url,
+                    discountpercent = c.DiscountPercent,
+                    discription = c.Discription,
+                    quantity = c.Quantity,
+                    unitprice = c.UnitPrice,
+                    insertingdate = c.InsertingDate,
+                    brandId = c.BrandId,
+                    categoryId = c.CategoryId
+                }).FirstOrDefaultAsync(c => c.id == id);
+            return Ok(products);
+        }
+
         // GET: api/ProductsImages
         [HttpGet]
         public async Task<IActionResult> GetAllProductsImagesAsync([FromQuery] long? Filter = null)
