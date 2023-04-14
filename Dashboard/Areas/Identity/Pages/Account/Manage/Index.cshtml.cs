@@ -56,11 +56,9 @@ namespace WebApplication1.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [Required]
-            [Display(Name = "first name")]
             public string FirstName { get; set; }
 
             [Required]
-            [Display(Name = "last name")]
             public string LastName { get; set; }
 
             /// <summary>
@@ -68,7 +66,6 @@ namespace WebApplication1.Areas.Identity.Pages.Account.Manage
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Phone]
-            [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
 
             [Display(Name = "profile Picture")]
